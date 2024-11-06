@@ -2,7 +2,7 @@ import { services } from '../../constant';
 
 export default function Services() {
   return (
-    <div className="flex flex-col items-center pt-12 bg-white w-full">
+    <div className="flex flex-col items-center bg-white w-full">
       <div className="w-full max-w-7xl mb-5 px-4">
         <div className="flex flex-col items-start">
           <img 

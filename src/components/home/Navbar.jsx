@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
   return (
@@ -6,11 +8,9 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-6">
         {/* Left side */}
         <div className="flex items-center space-x-4 text-2xl">
-          <a href="#" className="text-gray-700 hover:text-gray-900">HOME</a>
+          <Link to='/' className="text-gray-700 hover:text-gray-900">HOME</Link>
           <span className="text-gray-500">|</span>
-          <a href="#" className="text-gray-700 hover:text-gray-900">ABOUT</a>
-          <span className="text-gray-500">|</span>
-          <a href="#" className="text-gray-700 hover:text-gray-900">PROCESS</a>
+          <Link to='/services' className="text-gray-700 hover:text-gray-900">OUR SERVICES</Link>
         </div>
 
         {/* Centered logo section */}
@@ -25,11 +25,9 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center space-x-4 text-2xl">
-          <a href="#" className="text-gray-700 hover:text-gray-900">PORTFOLIO</a>
-          <span className="text-gray-500">|</span>
-          <a href="#" className="text-gray-700 hover:text-gray-900">JOURNAL</a>
-          <span className="text-gray-500">|</span>
           <a href="#" className="text-gray-700 hover:text-gray-900">CONNECT</a>
+          <span className="text-gray-500">|</span>
+          <a href="#" className="text-gray-700 hover:text-gray-900">DASHBOARD</a>
         </div>
       </div>
     </nav>
