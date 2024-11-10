@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../components/home/Navbar'
-import AllCategory from '../components/Services/AllCategory'
+import AllServices from '../components/Services/AllServices'
 
 function OurServices() {
   return (
     <div>
       <Navbar simpleLogo={true} />
-      <AllCategory/>
+      <AllServices/>
     </div>
   )
 }

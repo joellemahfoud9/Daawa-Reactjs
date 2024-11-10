@@ -20,7 +20,7 @@ const StarRating = ({ rating }) => {
   );
 };
 
-const AllCategory = () => {
+const AllServices = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
 
@@ -65,7 +65,7 @@ const AllCategory = () => {
           <div key={index}>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold text-gray-800">{service.serviceName}</h2>
-              <Link to='/all'>
+              <Link to={`/category/${service.serviceName}`}>
               <button className="px-6 py-2 text-bold border-black border transition">
                 SHOW MORE
               </button>  
@@ -93,11 +93,13 @@ const AllCategory = () => {
                     {/* Company Name and Show Details Button */}
                     <div className="flex justify-between items-center w-full">
                       <p className="text-lg font-medium text-white mb-2">{company.name}</p>
+                      <Link to={`/category/${service.serviceName}/${company.id}`}>
                       <button
                         className="px-4 py-2 bg-black text-white rounded-lg  transition"
                       >
                         Show Details
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -110,4 +112,4 @@ const AllCategory = () => {
   );
 };
 
-export default AllCategory;
+export default AllServices;

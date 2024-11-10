@@ -1,13 +1,13 @@
 import React from 'react';
-import Sidebar from '../components/ListCategory/Sidebar';
-import ProductGrid from '../components/ListCategory/ProductGrid';
+import Sidebar from '../components/Services/Category/Sidebar';
+import ListCategory from '../components/Services/Category/ListCategory'
 
 function AllCategories() {
   return (
     <div className="min-h-screen bg-white flex">
       <Sidebar />
       <div className="flex-1 p-8">
-        <ProductGrid />
+        <ListCategory/>
       </div>
     </div>
   );
