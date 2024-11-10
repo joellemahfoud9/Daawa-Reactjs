@@ -1,14 +1,14 @@
 import React from 'react'
+import Planners from '../components/Planners/OurPlanners'
 import Navbar from '../components/home/Navbar'
-import AllCategory from '../components/Services/AllCategory'
 
-function OurServices() {
+function WiddingPlanners() {
   return (
     <div>
       <Navbar simpleLogo={true} />
-      <AllCategory/>
+      <Planners/>
     </div>
   )
 }
 
-export default OurServices
+export default WiddingPlanners

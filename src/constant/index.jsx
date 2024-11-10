@@ -20,7 +20,24 @@ export const services = [
         title: 'Wedding Planner',
         imageUrl: 'src/assets/Services/undefined.webp', 
       },
-  ];
+  ]
+  export const cartData=[
+    {
+      "id": 1,
+      "name": "Invitation Card",
+      "color": "White",
+      "price": 39,
+      "quantity": 2,
+      "image": "src/assets/Services/ModernMonogram.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Flawers",
+      "price": 39,
+      "quantity": 1,
+      "image": "src/assets/Banner/Wedding-Traditions-Bouquet-5.jpg"
+    }
+  ]
   
   export const packages = [
     {
@@ -45,13 +62,52 @@ export const services = [
       imageUrl: 'src/assets/Packages/7357cef84848a3baf9369e9c49e643b0.jpg',
     },
   ];
+
+  export const products = [
+    {
+      id: 1, name: "Blossom & Bloom", image: "src/assets/Banner/Wedding-Traditions-Bouquet-5.jpg", rating: 4, price: 50.0
+    },
+    {
+      id: 2,name: "Floral Fantasy",image: "src/assets/Banner/20200514033505_file_5ebd65299a07c_5ebd659deb0b1.avif",rating: 5, price: 35.0
+    },
+    {
+      id: 3,name: "Petals & Posies",image: "src/assets/Packages/20Wedding+photo+ideas+of+bride+and+groomjpg.jpg",rating: 4, price: 65.0
+    },
+  ];
+  
+ 
+
+  
+  export const planners = [
+  {
+    name: 'Taylor',
+    role: 'Nutritionist',
+    image: 'src/assets/Planners/images.jpg', 
+    rating: 5,
+    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
+  },
+  {
+    name: 'Ana',
+    role: 'SEO Writer',
+    image: 'src/assets/Planners/2H7A3325-SLouttit-1-1.jpg',
+    rating: 5,
+    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
+  },
+  {
+    name: 'Lauren',
+    role: 'Web Designer',
+    image: 'src/assets/Planners/KvdB-Vierkant-1024x883.jpg',
+    rating: 5,
+    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
+  },
+];
   export const servicesData = [
     {
       serviceName: 'Photography',
       companies: [
-        { id: 1, name: 'Sunshine Studios', imageUrl: 'src/assets/Services/BrookRosePhotography-Reception102.jpg', rating: 4 },
-        { id: 2, name: 'Moment Capture', imageUrl: 'src/assets/Services/undefined.webp', rating: 5 },
-        { id: 3, name: 'Wedding Shots', imageUrl: 'src/assets/Services/ModernMonogram.jpg', rating: 3 },
+        { id: 1, name: 'Sunshine Studios', imageUrl: 'src/assets/Services/BrookRosePhotography-Reception102.jpg', rating: 4, price: 50.0 },
+        { id: 2, name: 'Moment Capture', imageUrl: 'src/assets/Services/undefined.webp', rating: 5 , price: 50.0},
+        { id: 3, name: 'Wedding Shots', imageUrl: 'src/assets/Services/ModernMonogram.jpg', rating: 3, price: 50.0 },
       ],
     },
     {

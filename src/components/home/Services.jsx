@@ -1,6 +1,6 @@
 import { services } from '../../constant';
 
-export default function Services() {
+const Services = () => {
   return (
     <div className="flex flex-col items-center bg-white w-full">
       <div className="w-full max-w-7xl mb-5 px-4">
@@ -34,3 +34,4 @@ export default function Services() {
     </div>
   );
 }
+export default Services;
