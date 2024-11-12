@@ -1,5 +1,5 @@
 import React from 'react'
-import ShoppingCart from '../components/home/ShoppingCart'
+import ShoppingCart from '../components/ShoppingCart/ShoppingCart'
 
 function Cart() {
   return (

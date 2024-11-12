@@ -1,30 +1,33 @@
 import React from 'react';
-import {planners} from "../../constant/index";
+import { useNavigate } from 'react-router-dom';
+import { planners } from '../../constant/index';
 
 const Planners = () => {
+  const navigate = useNavigate();
+
+  const handleShowDetails = (planner) => {
+    navigate(`/planner/${planner.id}`, { state: { plannerData: planner } });
+  };
+
   return (
-    <div className=" py-12 px-4">
-      <h2 className="text-center text-3xl font-bold mb-8">Unforgettable Moments Crafted by Our Expert Wedding Planners</h2>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+    <div className="py-12 px-4">
+      <h2 className="text-center text-4xl font-bold mb-12">Unforgettable Moments Crafted by Our Expert Wedding Planners</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {planners.map((planner, index) => (
-          <div key={index} className="bg-white text-gray-800 p-6 rounded-lg shadow-lg max-w-sm">
+          <div key={index} className="bg-white text-gray-800 p-8 rounded-xl shadow-xl transform hover:scale-105 transition-transform duration-300">
             <div className="flex flex-col items-center">
               <img
-                src={planner.image}
+                src={planner.photo}
                 alt={planner.name}
-                className="w-24 h-24 rounded-full mb-4 object-cover"
+                className="w-32 h-32 rounded-full mb-6 object-cover shadow-md"
               />
-              <h3 className="text-xl font-semibold">{planner.name}</h3>
-              <p className="text-gray-500">{planner.role}</p>
-              <div className="flex my-2">
-                {[...Array(planner.rating)].map((_, i) => (
-                  <span key={i} className="text-yellow-500">★</span>
-                ))}
-              </div>
-              <p className="text-center text-gray-600 mb-4">{planner.text}</p>
+              <h3 className="text-2xl font-semibold mb-2">{planner.name}</h3>
+              <p className="text-lg text-gray-500 mb-2">{planner.phone}</p>
+              <p className="text-lg text-gray-700 font-bold mb-6">{planner.price}</p>
               <button
-                onClick={() => handleShowDetails(planner.name)}
-                className="text-black font-semibold py-2 px-4 rounded border border-black"
+                onClick={() => handleShowDetails(planner)}
+                className="text-white font-semibold py-3 px-6 rounded-full bg-black transition-colors"
               >
                 Show Details
               </button>

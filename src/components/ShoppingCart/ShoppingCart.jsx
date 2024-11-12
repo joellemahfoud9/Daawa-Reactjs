@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { cartData } from '../../constant/index';
+import Navbar from '../home/Navbar'
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -39,6 +40,8 @@ const ShoppingCart = () => {
   };
 
   return (
+    <div>
+    <Navbar  simpleLogo={true}/>
     <div className=" min-h-screen flex justify-center items-center">
       <div className="w-full max-w-2xl p-6 bg-white shadow-lg">
         <h1 className="text-2xl font-semibold mb-6 text-center">Shopping Cart</h1>
@@ -132,6 +135,7 @@ const ShoppingCart = () => {
           <a href="#youtube">YouTube</a>
         </div>
       </div>
+    </div>
     </div>
   );
 };

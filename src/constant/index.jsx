@@ -77,120 +77,96 @@ export const services = [
   
  
 
+  // src/constant/index.js
+export const planners = [
+  {
+    id: 1,
+    name: "Jane Doe",
+    price: "$2,500",
+    photo: "/src/assets/Planners/2H7A3325-SLouttit-1-1.jpg",
+    phone: "(123) 456-7890",
+    previousWorks: [
+      { id: 1, image: "/src/assets/Packages/638e38e354ac0f001950f832.webp", title: "Elegant Wedding Setup" },
+      { id: 2, image: "/src/assets/Packages/7357cef84848a3baf9369e9c49e643b0.jpg", title: "Beachside Ceremony" },
+      { id: 3, image: "/src/assets/Services/undefined.webp", title: "Garden Reception" },
+    ],
+    schedule: {
+      1: "10 AM - 6 PM",
+      2: "Closed",
+      //... continue as needed
+      30: "10 AM - 6 PM",
+    },
+  },
+  {
+    id: 2,
+    name: "Alex Smith",
+    price: "$3,000",
+    photo: "/src/assets/Planners/images.jpg",
+    phone: "(987) 654-3210",
+    previousWorks: [
+      { id: 4, image: "/src/assets/Testimonial/1_R61828.jpg", title: "Rustic Barn Wedding" },
+      { id: 5, image: "/src/assets/Packages/7357cef84848a3baf9369e9c49e643b0.jpg", title: "Mountain Elopement" },
+      { id: 6, image: "/src/assets/Services/photographer/1d4a6ebd857e68c63a285caef915bef4.jpg", title: "City Hall Ceremony" },
+    ],
+    schedule: {
+      1: "Closed",
+      2: "10 AM - 5 PM",
+      //... continue as needed
+      30: "Closed",
+    },
+  },
+  {
+    id: 3,
+    name: "Sophia Lee",
+    price: "$2,800",
+    photo: "/src/assets/Planners/KvdB-Vierkant-1024x883.jpg",
+    phone: "(555) 123-4567",
+    previousWorks: [
+      { id: 7, image: "/src/assets/Services/undefined.webp", title: "Luxury Indoor Wedding" },
+      { id: 8, image: "/src/assets/Testimonial/1_R61828.jpg", title: "Minimalist Garden Party" },
+      { id: 9, image: "/src/assets/Packages/7357cef84848a3baf9369e9c49e643b0.jpg", title: "Sunset Beach Wedding" },
+    ],
+    schedule: {
+      1: "9 AM - 6 PM",
+      2: "9 AM - 6 PM",
+      //... continue as needed
+      30: "Closed",
+    },
+  },
   
-  export const planners = [
-  {
-    name: 'Taylor',
-    role: 'Nutritionist',
-    image: 'src/assets/Planners/images.jpg', 
-    rating: 5,
-    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
-  },
-  {
-    name: 'Ana',
-    role: 'SEO Writer',
-    image: 'src/assets/Planners/2H7A3325-SLouttit-1-1.jpg',
-    rating: 5,
-    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
-  },
-  {
-    name: 'Lauren',
-    role: 'Web Designer',
-    image: 'src/assets/Planners/KvdB-Vierkant-1024x883.jpg',
-    rating: 5,
-    text: 'Bardoni school romanesque lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id nisi erat. Mauris ac sollicitudin lorem. Phasellus scelerisque lacinia est.',
-  },
 ];
-  // export const servicesData = [
-  //   {
-  //     serviceName: 'Photography',
-  //     companies: [
-  //       { id: 1, name: 'Sunshine Studios', imageUrl: 'src/assets/Services/BrookRosePhotography-Reception102.jpg', rating: 4, price: 50.0 },
-  //       { id: 2, name: 'Moment Capture', imageUrl: 'src/assets/Services/undefined.webp', rating: 5 , price: 50.0},
-  //       { id: 3, name: 'Wedding Shots', imageUrl: 'src/assets/Services/ModernMonogram.jpg', rating: 3, price: 50.0 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Catering',
-  //     companies: [
-  //       { id: 4, name: 'Tasty Treats', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 5, name: 'Gourmet Catering', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 6, name: 'Feast Masters', imageUrl: 'https://via.placeholder.com/150', rating: 2 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Floral Design',
-  //     companies: [
-  //       { id: 7, name: 'Blossom & Bloom', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 8, name: 'Floral Fantasy', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //       { id: 9, name: 'Petals & Posies', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Venous',
-  //     companies: [
-  //       { id: 10, name: 'Elegant Events', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 11, name: 'Perfect Day Planners', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 12, name: 'Dream Weddings', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Music & Entertainment',
-  //     companies: [
-  //       { id: 13, name: 'DJ Soundwave', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 14, name: 'Harmony Bands', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 15, name: 'Live Harmony', imageUrl: 'https://via.placeholder.com/150', rating: 2 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Makeup & Beauty',
-  //     companies: [
-  //       { id: 16, name: 'Glam Squad', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 17, name: 'Beauty Bliss', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //       { id: 18, name: 'Bridal Glow', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Transportation',
-  //     companies: [
-  //       { id: 19, name: 'Luxury Rides', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //       { id: 20, name: 'Wedding Wheels', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 21, name: 'Royal Carriage', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Videography',
-  //     companies: [
-  //       { id: 22, name: 'Cinematic Moments', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 23, name: 'Film Magic', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 24, name: 'Forever Films', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Decor & Rentals',
-  //     companies: [
-  //       { id: 25, name: 'Elegant Rentals', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 26, name: 'Glamour Decor', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //       { id: 27, name: 'Party Perfection', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //     ],
-  //   },
-  //   {
-  //     serviceName: 'Invitations & Stationery',
-  //     companies: [
-  //       { id: 28, name: 'Paper Dreams', imageUrl: 'https://via.placeholder.com/150', rating: 4 },
-  //       { id: 29, name: 'Invitations by Design', imageUrl: 'https://via.placeholder.com/150', rating: 3 },
-  //       { id: 30, name: 'Elegant Invitations', imageUrl: 'https://via.placeholder.com/150', rating: 5 },
-  //     ],
-  //   },
-  // ];
-  
+
   export const servicesData = [
     {
       serviceName: 'Photography',
       companies: [
-        { id: 1, name: 'Sunshine Studios', imageUrl: '/src/assets/Services/BrookRosePhotography-Reception102.jpg', rating: 4, price: 50.0 },
-        { id: 2, name: 'Moment Capture', imageUrl: '/src/assets/Services/undefined.webp', rating: 5 , price: 50.0},
-        { id: 3, name: 'Wedding Shots', imageUrl: '/src/assets/Services/ModernMonogram.jpg', rating: 3, price: 50.0 },
+        {
+          id: 1,
+          name: 'Sunshine Studios',
+          imageUrl: '/src/assets/Services/photographer/1d4a6ebd857e68c63a285caef915bef4.jpg',
+          rating: 4,
+          price: 50.0,
+          location: 'Los Angeles, CA',
+          description: 'Specializes in wedding and event photography with a creative touch.',
+        },
+        {
+          id: 2,
+          name: 'Moment Capture',
+          imageUrl: '/src/assets/Services/photographer/questions-to-asj-wedding-photographer-recirc-getty-images--61ea34e9e287426d9ca41ae4615e964a.jpg',
+          rating: 5,
+          price: 50.0,
+          location: 'San Francisco, CA',
+          description: 'Capturing the most precious moments for your special day.',
+        },
+        {
+          id: 3,
+          name: 'Wedding Shots',
+          imageUrl: '/src/assets/Services/photographer/istockphoto-1335303339-612x612.jpg',
+          rating: 3,
+          price: 50.0,
+          location: 'New York, NY',
+          description: 'Offering traditional and modern photography for weddings and events.',
+        },
       ],
     },
   
@@ -200,8 +176,10 @@ export const services = [
         {
           id: 4,
           name: 'Tasty Treats',
-          imageUrl: 'https://via.placeholder.com/150',
+          imageUrl: '/src/assets/Services/catering/a-lavish-wedding-buffet-spread-featuring-an-array-OHIUJEtmT5qLaQCx7jgERg-2IBg5PRtSXmwqreVFya8kw.webp',
           rating: 4,
+          location: 'Miami, FL',
+          description: 'Premium catering services with a focus on fresh, local ingredients.',
           dishes: [
             { name: 'Grilled Salmon', price: 20 },
             { name: 'Steak', price: 25 },
@@ -209,36 +187,50 @@ export const services = [
           ],
         },
         {
-          id: 4,
-          name: 'Tasty Treats',
-          imageUrl: 'https://via.placeholder.com/150',
+          id: 5,  
+          name: 'Delicious Bites',
+          imageUrl: '/src/assets/Services/catering/wedding-catering-charlotte-1.jpg',
           rating: 4,
+          location: 'Chicago, IL',
+          description: 'Specializing in exquisite catering for events of all sizes.',
           dishes: [
-            { name: 'joe Salmon', price: 20 },
-            { name: 'ang', price: 25 },
-            { name: 'Vegan Platter', price: 15 },
+            { name: 'Chicken Wings', price: 18 },
+            { name: 'Vegetarian Tacos', price: 14 },
+            { name: 'Pasta Primavera', price: 16 },
           ],
         },
         // More companies...
       ],
     },
+    
     {
       serviceName: 'Venous',
       companies: [
         {
           id: 10,
           name: 'Elegant Events',
-          imageUrl: 'https://via.placeholder.com/150',
+          imageUrl: '/src/assets/Services/venus/Country-wedding-minimalist-ideas_1200x628.png',
           rating: 5,
+          location: 'Dallas, TX',
+          description: 'Offering charter services for weddings, parties, and corporate events.',
           charOptions: [
             { type: 'Small Charter', price: 100 },
             { type: 'Large Charter', price: 200 },
           ],
         },
+        {
+          id: 11, 
+          name: 'Charter Express',
+          imageUrl: '/src/assets/Services/venus/0a70010c-b47a-4482-a620-00fa9326e519.jpg',
+          rating: 4,
+          location: 'Orlando, FL',
+          description: 'Providing luxury charter services for every occasion.',
+          charOptions: [
+            { type: 'Medium Charter', price: 150 },
+            { type: 'Luxury Charter', price: 300 },
+          ],
+        },
         // More companies...
       ],
     },
-  
-    
   ];
-  

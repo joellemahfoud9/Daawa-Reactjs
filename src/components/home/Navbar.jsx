@@ -5,10 +5,10 @@ import { GiShoppingBag } from "react-icons/gi";
 
 const Navbar = ({ simpleLogo }) => {
   return (
-    <nav className=" py-4 shadow-sm relative">
-      <div className="container mx-auto flex items-center justify-between px-6">
+    <nav className=" shadow-sm relative">
+      <div className="container mx-auto flex justify-between px-2">
         {/* Left side */}
-        <div className="flex items-center space-x-4 text-2xl">
+        <div className="flex items-center justify-start space-x-4 text-2xl">
           <Link to='/' className="text-gray-700 hover:text-gray-900">HOME</Link>
           <span className="text-gray-500">|</span>
           <Link to='/services' className="text-gray-700 hover:text-gray-900">OUR SERVICES</Link>
@@ -30,7 +30,7 @@ const Navbar = ({ simpleLogo }) => {
           <div className="flex flex-col items-center w-[50%] lg:w-[30%] ">
          
             <img 
-              src="src/assets/Logo/logo.jpg"
+              src="/src/assets/Logo/logo.jpg"
               alt="Company Logo"
               className="h-24"
             />
@@ -38,14 +38,16 @@ const Navbar = ({ simpleLogo }) => {
         )}
 
         {/* Right side */}
-        <div className="flex items-center space-x-4 text-2xl">
+        <div className="flex items-center justify-end space-x-4 text-2xl">
           <Link to="/planners" className="text-gray-700 hover:text-gray-900">WEDDING PLANNERS</Link>
           <span className="text-gray-500">|</span>
-          <a href="#" className="text-gray-700 hover:text-gray-900">ABOUT US</a>
+          {/* <a href="#" className="text-gray-700 hover:text-gray-900">ABOUT US</a> */}
         </div>
 
+            <div className='flex items-center'>
+
           {/* Profile Icon */}
-        <Link to="/profile" className="text-gray-700 hover:text-gray-900">
+        <Link to="/profile" className="text-gray-700 hover:text-gray-900 px-2">
             <FaUser size={24} />
           </Link>
 
@@ -55,10 +57,11 @@ const Navbar = ({ simpleLogo }) => {
             {/* Badge for cart item count */}
             {/* {cartItemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                {cartItemCount}
+              {cartItemCount}
               </span>
-            )} */}
+              )} */}
           </Link>
+              </div>
       </div>
     </nav>
   );
