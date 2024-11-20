@@ -1,6 +1,6 @@
-import React from 'react';
+import { PropTypes } from "prop-types";
 
-function ProductCard({ name, image, rating, price}) {
+function ProductCard({ name, image, rating, price }) {
   return (
     <div className="border border-gray-200 rounded-md p-4 text-center">
       <div className="h-48 flex items-center justify-center mb-4">
@@ -12,10 +12,10 @@ function ProductCard({ name, image, rating, price}) {
 
       {/* Rating Stars */}
       <div className="text-yellow-500 text-sm mb-2">
-        {'★'.repeat(rating) + '☆'.repeat(5 - rating)}
+        {"★".repeat(rating) + "☆".repeat(5 - rating)}
       </div>
 
-      <p className="text-gray-600 font-medium mb-4">${price?.toFixed(2)}</p>
+      <p className="text-gray-600 font-medium mb-4">${price.toFixed(2)}</p>
 
       {/* Show Details Button */}
       <button className="bg-white text-black border border-black px-4 py-2 mt-2">
@@ -24,5 +24,14 @@ function ProductCard({ name, image, rating, price}) {
     </div>
   );
 }
+
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+};
+
+// props validation ^^^
 
 export default ProductCard;

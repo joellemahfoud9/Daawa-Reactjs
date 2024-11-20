@@ -1,12 +1,7 @@
-import React from 'react'
-import CompanyDetails from '../components/Services/Category/CompanyDetails'
+import CompanyDetails from "../components/Services/Category/CompanyDetails";
 
 function DetailsCompany() {
-  return (
-    <div>
-        <CompanyDetails/>
-    </div>
-  )
+  return <CompanyDetails />;
 }
 
-export default DetailsCompany
+export default DetailsCompany;

@@ -1,14 +1,7 @@
-import React from 'react'
-import Planners from '../components/Planners/OurPlanners'
-import Navbar from '../components/home/Navbar'
+import Planners from "../components/Planners/OurPlanners";
 
 function WiddingPlanners() {
-  return (
-    <div>
-      <Navbar simpleLogo={true} />
-      <Planners/>
-    </div>
-  )
+  return <Planners />;
 }
 
-export default WiddingPlanners
+export default WiddingPlanners;
