@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
-import { PropTypes } from "prop-types";
 
-const Navbar = ({ simpleLogo }) => {
+interface Props {
+  simpleLogo: boolean;
+}
+
+const Navbar = ({ simpleLogo }: Props) => {
   return (
     <nav className=" shadow-sm relative">
       <div className="container mx-auto flex justify-between px-2">
@@ -75,10 +78,6 @@ const Navbar = ({ simpleLogo }) => {
       </div>
     </nav>
   );
-};
-
-Navbar.propTypes = {
-  simpleLogo: PropTypes.boolean,
 };
 
 export default Navbar;

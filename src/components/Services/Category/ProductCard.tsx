@@ -1,6 +1,11 @@
-import { PropTypes } from "prop-types";
+interface Props {
+  name: string;
+  image: string;
+  rating: number;
+  price: number;
+}
 
-function ProductCard({ name, image, rating, price }) {
+function ProductCard({ name, image, rating, price }: Props) {
   return (
     <div className="border border-gray-200 rounded-md p-4 text-center">
       <div className="h-48 flex items-center justify-center mb-4">
@@ -24,14 +29,5 @@ function ProductCard({ name, image, rating, price }) {
     </div>
   );
 }
-
-ProductCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
-};
-
-// props validation ^^^
 
 export default ProductCard;

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { servicesData } from "../../../constant/index";
 import Navbar from "../../home/Navbar";
 import { GiShoppingBag } from "react-icons/gi";
+import { CharOption, Company, Dish } from "../../../models/Company";
 
 const CompanyDetails = () => {
   const { categoryName, companyId } = useParams();
@@ -41,6 +42,23 @@ const CompanyDetails = () => {
     }
   };
 
+  // Type Guard for checking if the company has dishes
+  function hasDishes(
+    company: Company
+  ): company is Company & { dishes: Dish[] } {
+    return (company as Company).dishes !== undefined;
+  }
+  // Type Guard for checking if the company has charOptions
+  function hasCharOptions(
+    company: Company
+  ): company is Company & { charOptions: CharOption[] } {
+    return (company as Company).charOptions !== undefined;
+  }
+  // Type Guard for checking if the company has a price
+  function hasPrice(company: Company): company is Company & { price: number } {
+    return (company as Company).price !== undefined;
+  }
+
   return (
     <div>
       <Navbar simpleLogo={true} />
@@ -69,7 +87,7 @@ const CompanyDetails = () => {
             <p className="text-sm text-gray-500 mb-4">{company.description}</p>
 
             {/* Conditional Content Based on Category */}
-            {categoryName === "Catering" && company.dishes ? (
+            {categoryName === "Catering" && hasDishes(company) ? (
               <div>
                 <h3 className="text-xl font-semibold mb-4">Dishes Offered</h3>
                 <ul className="space-y-2">
@@ -89,7 +107,7 @@ const CompanyDetails = () => {
                   ))}
                 </ul>
               </div>
-            ) : categoryName === "Venous" && company.charOptions ? (
+            ) : categoryName === "Venous" && hasCharOptions(company) ? (
               <div>
                 <h3 className="text-xl font-semibold mb-4">Charter Options</h3>
                 <ul className="space-y-2">
@@ -109,7 +127,7 @@ const CompanyDetails = () => {
                   ))}
                 </ul>
               </div>
-            ) : (
+            ) : hasPrice(company) ? (
               <div className="flex justify-between items-center">
                 <span className="text-gray-700">Price:</span>
                 <span className="text-gray-800 font-bold">
@@ -118,6 +136,11 @@ const CompanyDetails = () => {
                 <button className="bg-slate-200 px-4 py-3 ml-2">
                   <GiShoppingBag size={24} />
                 </button>
+              </div>
+            ) : (
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Price:</span>
+                <span className="text-gray-800 font-bold">N/A</span>
               </div>
             )}
           </div>

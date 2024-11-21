@@ -2,9 +2,12 @@ import { useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { servicesData } from "../../constant/index";
 import { Link } from "react-router-dom";
-import { PropTypes } from "prop-types";
 
-const StarRating = ({ rating }) => {
+interface Props {
+  rating: number;
+}
+
+const StarRating = ({ rating }: Props) => {
   const totalStars = 5;
 
   return (
@@ -115,10 +118,6 @@ const AllServices = () => {
       </div>
     </div>
   );
-};
-
-StarRating.propTypes = {
-  rating: PropTypes.number.isRequired,
 };
 
 export default AllServices;
