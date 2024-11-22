@@ -28,9 +28,9 @@ const usePostData = <T>({
     try {
       const response = await fetch(API_URL + endpoint, {
         method: "POST",
-        // headers: {
-        //   "Content-Type": "application/json",
-        // },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(body),
       });
 
