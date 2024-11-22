@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { planners } from "../../constant/index";
-import { Planner } from "../../models/Planner";
+import { Planner } from "../../models - temp/Planner";
 
 const Planners = () => {
   const navigate = useNavigate();

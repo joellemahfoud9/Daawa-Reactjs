@@ -1,7 +1,11 @@
 import { useParams } from "react-router-dom";
 import { servicesData } from "../../../constant/index";
 import { Link } from "react-router-dom";
-import { hasCharOptions, hasDishes, hasPrice } from "../../../models/Company";
+import {
+  hasCharOptions,
+  hasDishes,
+  hasPrice,
+} from "../../../models - temp/Company";
 
 function ListCategory() {
   const { categoryName } = useParams();

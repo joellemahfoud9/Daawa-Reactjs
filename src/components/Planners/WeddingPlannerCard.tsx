@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Work } from "../../models/Work";
+import { Work } from "../../models - temp/Work";
 
 const WeddingPlannerCard = () => {
   const location = useLocation();

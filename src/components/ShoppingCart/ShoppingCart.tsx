@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { cartData } from "../../constant/index";
-import { CartItem } from "../../models/Cart";
+import { CartItem } from "../../models - temp/Cart";
 
 const ShoppingCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);

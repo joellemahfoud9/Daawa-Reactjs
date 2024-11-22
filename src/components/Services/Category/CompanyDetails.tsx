@@ -10,8 +10,8 @@ import {
   hasCharOptions,
   hasDishes,
   hasPrice,
-} from "../../../models/Company";
-import { Review } from "../../../models/Review";
+} from "../../../models - temp/Company";
+import { Review } from "../../../models - temp/Review";
 
 const CompanyDetails = () => {
   const { categoryName, companyId } = useParams();
