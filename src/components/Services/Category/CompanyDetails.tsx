@@ -3,7 +3,15 @@ import { useParams } from "react-router-dom";
 import { servicesData } from "../../../constant/index";
 import Navbar from "../../home/Navbar";
 import { GiShoppingBag } from "react-icons/gi";
-import { CharOption, Company, Dish } from "../../../models/Company";
+import {
+  CharOption,
+  Company,
+  Dish,
+  hasCharOptions,
+  hasDishes,
+  hasPrice,
+} from "../../../models/Company";
+import { Review } from "../../../models/Review";
 
 const CompanyDetails = () => {
   const { categoryName, companyId } = useParams();
@@ -12,11 +20,11 @@ const CompanyDetails = () => {
     (service) => service.serviceName === categoryName
   );
   const company = category?.companies.find(
-    (comp) => comp.id === parseInt(companyId)
+    (comp) => comp.id === parseInt(companyId!)
   );
 
   // react hooks should not be called conditionally
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [newReview, setNewReview] = useState({
     text: "",
     userName: "",
@@ -41,23 +49,6 @@ const CompanyDetails = () => {
       setNewReview({ text: "", userName: "", rating: "", location: "" });
     }
   };
-
-  // Type Guard for checking if the company has dishes
-  function hasDishes(
-    company: Company
-  ): company is Company & { dishes: Dish[] } {
-    return (company as Company).dishes !== undefined;
-  }
-  // Type Guard for checking if the company has charOptions
-  function hasCharOptions(
-    company: Company
-  ): company is Company & { charOptions: CharOption[] } {
-    return (company as Company).charOptions !== undefined;
-  }
-  // Type Guard for checking if the company has a price
-  function hasPrice(company: Company): company is Company & { price: number } {
-    return (company as Company).price !== undefined;
-  }
 
   return (
     <div>

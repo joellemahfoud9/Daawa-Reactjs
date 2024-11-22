@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { planners } from "../../constant/index";
+import { Planner } from "../../models/Planner";
 
 const Planners = () => {
   const navigate = useNavigate();
 
-  const handleShowDetails = (planner) => {
+  const handleShowDetails = (planner: Planner) => {
     navigate(`/planner/${planner.id}`, { state: { plannerData: planner } });
   };
 

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { Work } from "../../models/Work";
 
 const WeddingPlannerCard = () => {
   const location = useLocation();
@@ -47,7 +48,7 @@ const WeddingPlannerCard = () => {
               Previous Work
             </h3>
             <div className="grid grid-cols-3 gap-4">
-              {plannerData.previousWorks.map((work) => (
+              {plannerData.previousWorks.map((work: Work) => (
                 <div key={work.id} className="flex flex-col items-center">
                   <img
                     className="w-28 h-28 object-cover rounded-md"

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { cartData } from "../../constant/index";
+import { CartItem } from "../../models/Cart";
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [shipping, setShipping] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [coupon, setCoupon] = useState("");
@@ -20,7 +21,7 @@ const ShoppingCart = () => {
     setTotalAmount(total);
   }, [cartItems, shipping, discount]);
 
-  const handleQuantityChange = (id, quantity) => {
+  const handleQuantityChange = (id: number, quantity: number) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
@@ -28,7 +29,7 @@ const ShoppingCart = () => {
     );
   };
 
-  const handleRemoveItem = (id) => {
+  const handleRemoveItem = (id: number) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 

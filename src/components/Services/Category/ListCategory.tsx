@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { servicesData } from "../../../constant/index";
 import { Link } from "react-router-dom";
+import { hasCharOptions, hasDishes, hasPrice } from "../../../models/Company";
 
 function ListCategory() {
   const { categoryName } = useParams();
@@ -42,7 +43,7 @@ function ListCategory() {
             </div>
 
             {/* Render different details based on category type */}
-            {category.serviceName === "Catering" && company.dishes ? (
+            {category.serviceName === "Catering" && hasDishes(company) ? (
               <div className="text-left">
                 <h5 className="font-semibold mb-2">Dishes Offered:</h5>
                 {company.dishes.map((dish, index) => (
@@ -51,7 +52,7 @@ function ListCategory() {
                   </p>
                 ))}
               </div>
-            ) : category.serviceName === "Venous" && company.charOptions ? (
+            ) : category.serviceName === "Venous" && hasCharOptions(company) ? (
               <div className="text-left">
                 <h5 className="font-semibold mb-2">Charter Options:</h5>
                 {company.charOptions.map((option, index) => (
@@ -60,10 +61,12 @@ function ListCategory() {
                   </p>
                 ))}
               </div>
-            ) : (
+            ) : hasPrice(company) ? (
               <p className="text-gray-600 font-medium mb-4">
                 ${company.price?.toFixed(2)}
               </p>
+            ) : (
+              <p className="text-gray-600 font-medium mb-4">$N/A</p>
             )}
 
             {/* show details Button */}
