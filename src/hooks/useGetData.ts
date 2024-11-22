@@ -7,13 +7,13 @@ type FetchState<T> = {
   data: T | null;
 };
 
-const useApi = <T>(endpoint: string): FetchState<T> => {
+const useGetData = <T>(endpoint: string): FetchState<T> => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<T | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       setIsLoading(true);
       setError(null);
       try {
@@ -36,10 +36,10 @@ const useApi = <T>(endpoint: string): FetchState<T> => {
       }
     };
 
-    fetchData();
+    getData();
   }, [endpoint]);
 
   return { isLoading, error, data };
 };
 
-export default useApi;
+export default useGetData;
