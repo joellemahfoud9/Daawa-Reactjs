@@ -9,9 +9,16 @@ import useDeleteData from "../../hooks/useDeleteData";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
+import Pagination from "../../components/Admin/Pagination";
 
 const AdminUsersTable = () => {
-  const { isLoading, error, data } = useGetData<{ data: User[] }>("users");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { isLoading, error, data } = useGetData<{
+    total: number;
+    pageSize: number;
+    data: User[];
+  }>(`users?page=${currentPage}`);
 
   /* DELETE MODAL LOGIC */
   const {
@@ -144,50 +151,58 @@ const AdminUsersTable = () => {
         ) : error ? (
           <span>{error}</span>
         ) : data ? (
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>id</th>
-                <th>name</th>
-                <th>email</th>
-                <th>phone</th>
-                {/* <th>password</th> */}
-                <th>role</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.data.map((user) => (
-                <tr key={user.id}>
-                  <td>
-                    <input
-                      type="checkbox"
-                      checked={selectedUserIds.includes(user.id)}
-                      onChange={() => handleCheckboxChange(user.id)}
-                    />
-                  </td>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  {/* <td>{user.password}</td> */}
-                  <td>{user.role}</td>
-                  <td>
-                    <div className="flex justify-center gap-8">
-                      <button>
-                        <FaPen color="darkblue" />
-                      </button>
-                      <button onClick={() => handleDeleteClick(user)}>
-                        <FaTrash color="darkred" />
-                      </button>
-                    </div>
-                  </td>
+          <>
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>email</th>
+                  <th>phone</th>
+                  {/* <th>password</th> */}
+                  <th>role</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.data.map((user) => (
+                  <tr key={user.id}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={selectedUserIds.includes(user.id)}
+                        onChange={() => handleCheckboxChange(user.id)}
+                      />
+                    </td>
+                    <td>{user.id}</td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phone}</td>
+                    {/* <td>{user.password}</td> */}
+                    <td>{user.role}</td>
+                    <td>
+                      <div className="flex justify-center gap-8">
+                        <button>
+                          <FaPen color="darkblue" />
+                        </button>
+                        <button onClick={() => handleDeleteClick(user)}>
+                          <FaTrash color="darkred" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         ) : null}
+        <Pagination
+          totalItems={data?.total || 0}
+          itemsPerPage={data?.pageSize || 0}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </main>
     </>
   );

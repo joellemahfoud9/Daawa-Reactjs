@@ -6,8 +6,8 @@
   @apply border w-full;
 }
 .admin-table > tbody > tr > td {
-  @apply border px-4 text-center;
+  @apply border px-4 py-1 text-center;
 }
 .admin-table > thead > tr > th {
-  @apply border px-4;
+  @apply border px-4 py-1;
 }
