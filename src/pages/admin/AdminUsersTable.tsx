@@ -121,15 +121,15 @@ const AdminUsersTable = () => {
         <FloatingActionButtonAdd />
       </Link>
 
-      <main className="p-page flex flex-col">
-        <div>UsersTable</div>
-        {selectedUserIds.length !== 0 && (
-          <div className="flex gap-4 self-end">
+      <main className="p-page flex flex-col mb-24">
+        <h1 className="text-4xl font-bold">Users</h1>
+        {selectedUserIds.length !== 0 ? (
+          <div className="flex gap-4 self-end my-4">
             <button
               onClick={() => setIsDeleteMultipleModalOpen(true)}
-              className="rounded px-4 py-1 bg-red-800"
+              className="min-w-32 rounded px-4 py-1 bg-red-800"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center gap-2">
                 <FaTrash color="white" />
                 <span className="text-white">
                   {selectedUserIds.length} selected
@@ -138,13 +138,15 @@ const AdminUsersTable = () => {
             </button>
             <button
               onClick={handleUnselectAll}
-              className="border border-black px-3 py-1 rounded"
+              className="min-w-32 rounded px-3 py-1 bg-accent"
             >
-              <div className="flex items-center gap-2">
-                <span>unselect all</span>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-white">unselect all</span>
               </div>
             </button>
           </div>
+        ) : (
+          <div className="my-4" />
         )}
         {isLoading ? (
           <span>Loading...</span>
@@ -170,6 +172,7 @@ const AdminUsersTable = () => {
                   <tr key={user.id}>
                     <td>
                       <input
+                        className="accent-accent"
                         type="checkbox"
                         checked={selectedUserIds.includes(user.id)}
                         onChange={() => handleCheckboxChange(user.id)}
@@ -182,12 +185,15 @@ const AdminUsersTable = () => {
                     {/* <td>{user.password}</td> */}
                     <td>{user.role}</td>
                     <td>
-                      <div className="flex justify-center gap-8">
-                        <button>
-                          <FaPen color="darkblue" />
+                      <div className="flex justify-center gap-4">
+                        <button className="bg-blue-800 py-1 px-2 rounded">
+                          <FaPen color="white" />
                         </button>
-                        <button onClick={() => handleDeleteClick(user)}>
-                          <FaTrash color="darkred" />
+                        <button
+                          className="bg-red-800 py-1 px-2 rounded"
+                          onClick={() => handleDeleteClick(user)}
+                        >
+                          <FaTrash color="white" />
                         </button>
                       </div>
                     </td>

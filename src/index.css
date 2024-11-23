@@ -5,9 +5,12 @@
 .admin-table {
   @apply border w-full;
 }
+.admin-table > tbody > tr {
+  @apply even:bg-gray-100;
+}
 .admin-table > tbody > tr > td {
-  @apply border px-4 py-1 text-center;
+  @apply border px-3 py-3 text-center;
 }
 .admin-table > thead > tr > th {
-  @apply border px-4 py-1;
+  @apply border px-3 py-3 bg-accent text-white;
 }

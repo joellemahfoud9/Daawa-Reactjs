@@ -54,7 +54,9 @@ const AdminUsersNew = () => {
       <ToastContainer />
 
       <main className="p-page">
-        <div>AdminUsersNew</div>
+        <div className="text-4xl font-bold">New User</div>
+
+        <div className="my-4" />
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <LabeledTextInput
@@ -108,7 +110,7 @@ const AdminUsersNew = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700"
+              className="px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90"
             >
               {isLoading ? "Loading..." : "Add User"}
             </button>

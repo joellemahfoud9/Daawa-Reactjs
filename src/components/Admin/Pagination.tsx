@@ -31,38 +31,40 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex justify-center items-center mt-4">
-      <button
-        onClick={handlePreviousPage}
-        disabled={currentPage === 1}
-        className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2 disabled:bg-gray-300"
-      >
-        Prev
-      </button>
+    <div className="flex justify-center">
+      <div className="fixed bottom-12 flex items-center">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className="px-4 py-2 bg-accent text-white rounded-md mr-2 disabled:bg-gray-300 hover:bg-opacity-90"
+        >
+          Prev
+        </button>
 
-      <div className="flex space-x-2">
-        {pageNumbers.map((page) => (
-          <button
-            key={page}
-            onClick={() => setCurrentPage(page)}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === page
-                ? "bg-blue-500 text-white"
-                : "bg-white text-blue-500 hover:bg-blue-200"
-            }`}
-          >
-            {page}
-          </button>
-        ))}
+        <div className="flex space-x-2">
+          {pageNumbers.map((page) => (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`px-4 py-2 rounded-md ${
+                currentPage === page
+                  ? "bg-accent text-white hover:bg-opacity-90"
+                  : "bg-white text-accent hover:bg-accent hover:bg-opacity-10"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className="px-4 py-2 bg-accent text-white rounded-md ml-2 disabled:bg-gray-300 hover:bg-opacity-90"
+        >
+          Next
+        </button>
       </div>
-
-      <button
-        onClick={handleNextPage}
-        disabled={currentPage === totalPages}
-        className="px-4 py-2 bg-blue-500 text-white rounded-md ml-2 disabled:bg-gray-300"
-      >
-        Next
-      </button>
     </div>
   );
 };

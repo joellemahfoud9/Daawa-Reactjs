@@ -9,6 +9,7 @@ import WeddingPlannerCard from "./components/Planners/WeddingPlannerCard";
 import UserLayout from "./layouts/UserLayout";
 import AdminUsersTable from "./pages/admin/AdminUsersTable";
 import AdminUsersNew from "./pages/admin/AdminUsersNew";
+import AdminLayout from "./layouts/AdminLayout";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
       />
       <Route path="/planner/:id" element={<WeddingPlannerCard />} />
 
-      <Route path="/admin">
+      <Route path="/admin" element={<AdminLayout />}>
         <Route path="users" element={<AdminUsersTable />} />
         <Route path="users/new" element={<AdminUsersNew />} />
       </Route>

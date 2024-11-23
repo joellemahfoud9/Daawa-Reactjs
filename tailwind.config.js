@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        accent: "#0f172a",
+      },
       padding: {
         page: "2rem",
       },
