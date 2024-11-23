@@ -186,9 +186,11 @@ const AdminUsersTable = () => {
                     <td>{user.role}</td>
                     <td>
                       <div className="flex justify-center gap-4">
-                        <button className="bg-blue-800 py-1 px-2 rounded">
-                          <FaPen color="white" />
-                        </button>
+                        <Link to={user.id} state={user}>
+                          <button className="bg-blue-800 py-1 px-2 rounded">
+                            <FaPen color="white" />
+                          </button>
+                        </Link>
                         <button
                           className="bg-red-800 py-1 px-2 rounded"
                           onClick={() => handleDeleteClick(user)}
