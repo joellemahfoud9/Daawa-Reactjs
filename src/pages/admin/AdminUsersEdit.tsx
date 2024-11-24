@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import usePutData from "../../hooks/usePutData";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import usePatchdata from "../../hooks/usePatchData";
 
 const AdminUsersEdit = () => {
   //   const { id } = useParams();
@@ -24,7 +24,7 @@ const AdminUsersEdit = () => {
     }));
   };
 
-  const { putData, isLoading, error, data } = usePutData({
+  const { patchData, isLoading, error, data } = usePatchdata({
     endpoint: `users/${state.id}`,
     body: formData,
   });
@@ -41,7 +41,7 @@ const AdminUsersEdit = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await putData();
+      await patchData();
     } catch (err) {
       console.log(err);
     }
@@ -92,13 +92,23 @@ const AdminUsersEdit = () => {
             </tbody>
           </table>
 
-          <button
-            type="submit"
-            className="w-36 fixed bottom-12 right-12 bg-accent text-white px-4 py-2 rounded"
-            disabled={isLoading}
-          >
-            {isLoading ? "Saving..." : "Save Changes"}
-          </button>
+          <div className="flex gap-4 fixed bottom-12 right-12">
+            <Link
+              className="w-36 bg-gray-200 text-accent px-4 py-2 rounded text-center"
+              to={`/admin/users/password/${state.id}`}
+              state={state}
+            >
+              Password
+            </Link>
+
+            <button
+              type="submit"
+              className="w-36 bg-accent text-white px-4 py-2 rounded focus:outline-amber-400"
+              disabled={isLoading}
+            >
+              {isLoading ? "Saving..." : "Save Changes"}
+            </button>
+          </div>
         </form>
       </main>
     </>
