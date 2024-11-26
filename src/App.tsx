@@ -12,6 +12,7 @@ import AdminUsersNew from "./pages/admin/AdminUsersNew";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminUsersEdit from "./pages/admin/AdminUsersEdit";
 import AdminUsersEditPassword from "./pages/admin/AdminUsersEditPassword";
+import AdminBusinessesTable from "./pages/admin/AdminBusinessesTable";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="users/new" element={<AdminUsersNew />} />
         <Route path="users/:id" element={<AdminUsersEdit />} />
         <Route path="users/password/:id" element={<AdminUsersEditPassword />} />
+        <Route path="businesses" element={<AdminBusinessesTable/>}/>
       </Route>
     </Routes>
   );
