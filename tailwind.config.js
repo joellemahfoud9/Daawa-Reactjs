@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: "#0f172a",
+        accent: "#0f172a", 
       },
       padding: {
         page: "2rem",
