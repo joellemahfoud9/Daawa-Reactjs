@@ -3,6 +3,7 @@ import BusinessCard from "../../components/Admin/BusinessCard";
 import useGetData from "../../hooks/useGetData";
 import { Business } from "../../models/Business";
 import Pagination from "../../components/Admin/Pagination";
+import SubmitFAB from "../../components/Admin/SubmitFAB";
 
 const AdminCollectionsNew = () => {
   const {
@@ -64,13 +65,7 @@ const AdminCollectionsNew = () => {
         totalItems={20}
       />
 
-      <button
-        type="submit"
-        disabled={isLoading}
-        className="fixed z-50 bottom-12 right-12 px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90 focus:outline-amber-400"
-      >
-        {isLoading ? "Loading..." : "Create Collection"}
-      </button>
+      <SubmitFAB isLoading={isLoading}>Create Collection</SubmitFAB>
     </main>
   );
 };

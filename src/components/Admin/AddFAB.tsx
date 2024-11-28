@@ -1,6 +1,6 @@
 import { FaPlus } from "react-icons/fa";
 
-const FloatingActionButtonAdd = () => {
+const AddFAB = () => {
   return (
     <div className="fixed bottom-12 right-12 p-4 rounded-full bg-accent">
       <FaPlus color="white" className="w-4 h-4" />
@@ -8,4 +8,4 @@ const FloatingActionButtonAdd = () => {
   );
 };
 
-export default FloatingActionButtonAdd;
+export default AddFAB;
