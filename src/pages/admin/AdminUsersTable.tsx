@@ -117,6 +117,13 @@ const AdminUsersTable = () => {
         isLoading={isLoadingDeleteMultiple}
       />
 
+      <Pagination
+        totalItems={data?.total || 0}
+        itemsPerPage={data?.pageSize || 0}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
       <Link to={"/admin/users/new"}>
         <FloatingActionButtonAdd />
       </Link>
@@ -205,12 +212,6 @@ const AdminUsersTable = () => {
             </table>
           </>
         ) : null}
-        <Pagination
-          totalItems={data?.total || 0}
-          itemsPerPage={data?.pageSize || 0}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
       </main>
     </>
   );

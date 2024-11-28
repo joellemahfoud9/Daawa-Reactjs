@@ -32,11 +32,11 @@ const Pagination = ({
 
   return (
     <div className="flex justify-center">
-      <div className="fixed bottom-12 flex items-center">
+      <div className="fixed z-50 bottom-12 flex items-center">
         <button
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-accent text-white rounded-md mr-2 disabled:bg-gray-300 hover:bg-opacity-90"
+          className="px-4 py-2 bg-accent text-white rounded-md mr-2 disabled:bg-gray-300 hover:bg-opacity-90 focus:outline-amber-400"
         >
           Prev
         </button>
@@ -48,7 +48,7 @@ const Pagination = ({
               onClick={() => setCurrentPage(page)}
               className={`px-4 py-2 rounded-md ${
                 currentPage === page
-                  ? "bg-accent text-white hover:bg-opacity-90"
+                  ? "bg-accent text-white hover:bg-opacity-90 focus:outline-amber-400"
                   : "bg-white text-accent hover:bg-accent hover:bg-opacity-10"
               }`}
             >
@@ -60,7 +60,7 @@ const Pagination = ({
         <button
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-accent text-white rounded-md ml-2 disabled:bg-gray-300 hover:bg-opacity-90"
+          className="px-4 py-2 bg-accent text-white rounded-md ml-2 disabled:bg-gray-300 hover:bg-opacity-90 focus:outline-amber-400"
         >
           Next
         </button>

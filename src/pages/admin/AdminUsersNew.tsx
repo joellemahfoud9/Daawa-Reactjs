@@ -109,7 +109,7 @@ const AdminUsersNew = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="fixed bottom-12 right-12 px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90"
+            className="fixed bottom-12 right-12 px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90 focus:outline-amber-400"
           >
             {isLoading ? "Loading..." : "Add User"}
           </button>
