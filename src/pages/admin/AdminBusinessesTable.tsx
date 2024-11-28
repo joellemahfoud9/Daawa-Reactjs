@@ -1,13 +1,67 @@
 import { useEffect, useState } from "react";
 import { Business } from "../../models/Business";
 import useGetData from "../../hooks/useGetData";
+import Pagination from "../../components/Admin/Pagination";
+import { Link} from "react-router-dom";
+import FloatingActionButtonAdd from "../../components/Admin/FloatingActionButtonAdd";
+import { FaPen, FaTrash } from "react-icons/fa";
+import useDeleteData from "../../hooks/useDeleteData";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
+
 
 const AdminBusinessesTable = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { isLoading, error, data } = useGetData<{
+    total: number;
+    pageSize: number;
+    data: Business[];
+  }>(`businesses?page=${currentPage}`);
+  
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<Business | null>(null);
   const {
-    isLoading,
-    error,
-    data: businesses,
-  } = useGetData<{ data: Business[] }>("businesses");
+    deleteData,
+    isLoading: isLoadingDelete,
+    error: errorDelete,
+    data: dataDelete,
+  } = useDeleteData("businesses");
+
+  const handleDeleteClick = (item: Business) => {
+    setItemToDelete(item);
+    setIsDeleteModalOpen(true);
+  };
+  const handleCancel = () => {
+    setIsDeleteModalOpen(false);
+    setItemToDelete(null);
+  };
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteData(itemToDelete!.id);
+      setIsDeleteModalOpen(false);
+      setItemToDelete(null);
+    } catch (error) {
+      setIsDeleteModalOpen(false);
+      setItemToDelete(null);
+    }
+  };
+  useEffect(() => {
+    if (dataDelete) {
+      toast.success(`deleted successfully!`);
+    }
+    if (errorDelete) {
+      toast.error(`Failed to delete. Please try again.`);
+    }
+  }, [dataDelete, errorDelete]);
+
+  // const {
+  //   isLoading,
+  //   error,
+  //   data: businesses,
+  // } = useGetData<{ data: Business[] }>("businesses");
+
   // const [businesses, setBusinesses] = useState<{ data: Business[] } | null>(
   //   null
   // );
@@ -22,15 +76,31 @@ const AdminBusinessesTable = () => {
   // }, []);
 
   return (
-      <div>
+    <>
+    <ToastContainer/>
+    <DeleteConfirmDialog
+        isOpen={isDeleteModalOpen}
+        onCancel={handleCancel}
+        onConfirm={handleConfirmDelete}
+        details={itemToDelete?.name}
+        isLoading={isLoadingDelete}
+      />
+
+    <Link to={"/admin/users/new"}>
+    <FloatingActionButtonAdd />
+    </Link>
+  <main className="p-page">
+  <h1 className="text-4xl font-bold">Businesses</h1>
+      <div className="my-4">
     {isLoading?(
-      <span>Loading</span>
+      <span>Loading...</span>
     ):error ?(
       <span>{error}</span>
-    ):businesses ?(
-    <table>
+    ):data?(
+    <table className="admin-table">
       <thead>
         <tr>
+          <th></th>
           <th>ID</th>
           <th>Name</th>
           <th>Email</th>
@@ -39,11 +109,20 @@ const AdminBusinessesTable = () => {
           <th>Description</th>
           <th>Category</th>
           <th>Image</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        {businesses.data.map((item) => (
+        {data.data.map((item) => (
           <tr key={item.id}>
+                <td>
+                      <input
+                        className="accent-accent"
+                        type="checkbox"
+                        //checked={selectedUserIds.includes(user.id)}
+                        //onChange={() => handleCheckboxChange(user.id)}
+                      />
+                    </td>
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
@@ -52,15 +131,37 @@ const AdminBusinessesTable = () => {
             <td>{item.description}</td>
             <td>{item.category.name}</td>
             <td>
-              {" "}
               <img src={item.image} />
             </td>
+            <td>
+                      <div className="flex justify-center gap-4">
+                        <Link to="/admin/users">
+                          <button className="bg-blue-800 py-1 px-2 rounded">
+                            <FaPen color="white" />
+                          </button>
+                        </Link>
+                        <button
+                          className="bg-red-800 py-1 px-2 rounded"
+                          onClick={() => handleDeleteClick(item)}
+                        >
+                          <FaTrash color="white" />
+                        </button>
+                      </div>
+                    </td>
           </tr>
         ))}
       </tbody>
     </table>
     ):null}
+     <Pagination
+          totalItems={data?.total || 0}
+          itemsPerPage={data?.pageSize || 0}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
     </div>
+    </main>
+    </>
   );
 };
 
