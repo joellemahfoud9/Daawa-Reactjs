@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Business } from "../../models/Business";
 import useGetData from "../../hooks/useGetData";
 import Pagination from "../../components/Admin/Pagination";
-import { Link} from "react-router-dom";
-import FloatingActionButtonAdd from "../../components/Admin/FloatingActionButtonAdd";
+import { Link } from "react-router-dom";
+import FloatingActionButtonAdd from "../../components/Admin/AddFAB";
 import { FaPen, FaTrash } from "react-icons/fa";
 import useDeleteData from "../../hooks/useDeleteData";
+import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
-import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 
 
 const AdminBusinessesTable = () => {
@@ -20,7 +20,7 @@ const AdminBusinessesTable = () => {
     pageSize: number;
     data: Business[];
   }>(`businesses?page=${currentPage}`);
-  
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<Business | null>(null);
   const {
@@ -122,7 +122,6 @@ const AdminBusinessesTable = () => {
   return (
     <>
     <ToastContainer/>
-
     <DeleteConfirmDialog
         isOpen={isDeleteModalOpen}
         onCancel={handleCancel}
@@ -141,39 +140,14 @@ const AdminBusinessesTable = () => {
     <Link to={"/admin/users/new"}>
     <FloatingActionButtonAdd />
     </Link>
-  <main className="p-page flex flex-col mb-24">
+  <main className="p-page">
   <h1 className="text-4xl font-bold">Businesses</h1>
-  {selectedUserIds.length !== 0 ? (
-          <div className="flex gap-4 self-end my-4">
-            <button
-              onClick={() => setIsDeleteMultipleModalOpen(true)}
-              className="min-w-32 rounded px-4 py-1 bg-red-800"
-            >
-              <div className="flex items-center justify-center gap-2">
-                <FaTrash color="white" />
-                <span className="text-white">
-                  {selectedUserIds.length} selected
-                </span>
-              </div>
-            </button>
-            <button
-              onClick={handleUnselectAll}
-              className="min-w-32 rounded px-3 py-1 bg-accent"
-            >
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-white">unselect all</span>
-              </div>
-            </button>
-          </div>
-        ) : (
-      <div className="my-4"/>
-         )}
+      <div className="my-4">
     {isLoading?(
       <span>Loading...</span>
     ):error ?(
       <span>{error}</span>
     ):data?(
-      <>
     <table className="admin-table">
       <thead>
         <tr>
@@ -200,17 +174,17 @@ const AdminBusinessesTable = () => {
                         onChange={() => handleCheckboxChange(item.id)}
                       />
                     </td>
-            <td>{item.id}</td>
-            <td>{item.name}</td>
-            <td>{item.email}</td>
-            <td>{item.phone}</td>
-            <td>{item.address}</td>
-            <td>{item.description}</td>
-            <td>{item.category.name}</td>
-            <td>
-              <img src={item.image} />
-            </td>
-            <td>
+                    <td>{item.id}</td>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.address}</td>
+                    <td>{item.description}</td>
+                    <td>{item.category.name}</td>
+                    <td>
+                      <img className="w-12 h-12" src={item.image} />
+                    </td>
+                    <td>
                       <div className="flex justify-center gap-4">
                         <Link to="/admin/users">
                           <button className="bg-blue-800 py-1 px-2 rounded">
@@ -229,14 +203,14 @@ const AdminBusinessesTable = () => {
         ))}
       </tbody>
     </table>
-    </>
-  ) :null} 
+    ):null}
      <Pagination
           totalItems={data?.total || 0}
           itemsPerPage={data?.pageSize || 0}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+    </div>
     </main>
     </>
   );

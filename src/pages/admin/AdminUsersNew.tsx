@@ -3,6 +3,7 @@ import LabeledTextInput from "../../components/Admin/LabeledTextInput";
 import usePostData from "../../hooks/usePostData";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SubmitFAB from "../../components/Admin/SubmitFAB";
 
 const AdminUsersNew = () => {
   const [formData, setFormData] = useState({
@@ -106,13 +107,7 @@ const AdminUsersNew = () => {
             {/* {errors.role && <p className="text-red-500 text-xs">{errors.role}</p>} */}
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="fixed bottom-12 right-12 px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-opacity-90"
-          >
-            {isLoading ? "Loading..." : "Add User"}
-          </button>
+          <SubmitFAB isLoading={isLoading}>Add User</SubmitFAB>
         </form>
       </main>
     </>

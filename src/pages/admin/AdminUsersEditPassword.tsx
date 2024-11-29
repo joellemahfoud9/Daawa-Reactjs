@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import usePatchdata from "../../hooks/usePatchData";
+import SubmitFAB from "../../components/Admin/SubmitFAB";
 
 const AdminUsersEditPassword = () => {
   const { state } = useLocation();
@@ -83,13 +84,7 @@ const AdminUsersEditPassword = () => {
             </tbody>
           </table>
 
-          <button
-            type="submit"
-            className="fixed bottom-12 right-12 w-36 bg-accent text-white px-4 py-2 rounded focus:outline-amber-400"
-            disabled={isLoading}
-          >
-            {isLoading ? "Saving..." : "Save Changes"}
-          </button>
+          <SubmitFAB isLoading={isLoading}>Save Changes</SubmitFAB>
         </form>
       </main>
     </>

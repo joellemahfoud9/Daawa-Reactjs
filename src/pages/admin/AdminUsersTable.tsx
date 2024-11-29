@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import FloatingActionButtonAdd from "../../components/Admin/FloatingActionButtonAdd";
 import { User } from "../../models/User";
 import { FaPen, FaTrash } from "react-icons/fa";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
@@ -10,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import Pagination from "../../components/Admin/Pagination";
+import AddFAB from "../../components/Admin/AddFAB";
 
 const AdminUsersTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -117,8 +117,15 @@ const AdminUsersTable = () => {
         isLoading={isLoadingDeleteMultiple}
       />
 
+      <Pagination
+        totalItems={data?.total || 0}
+        itemsPerPage={data?.pageSize || 0}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
       <Link to={"/admin/users/new"}>
-        <FloatingActionButtonAdd />
+        <AddFAB />
       </Link>
 
       <main className="p-page flex flex-col mb-24">
@@ -205,12 +212,6 @@ const AdminUsersTable = () => {
             </table>
           </>
         ) : null}
-        <Pagination
-          totalItems={data?.total || 0}
-          itemsPerPage={data?.pageSize || 0}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
       </main>
     </>
   );
