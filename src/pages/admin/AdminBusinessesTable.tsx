@@ -6,11 +6,10 @@ import { Link } from "react-router-dom";
 import FloatingActionButtonAdd from "../../components/Admin/AddFAB";
 import { FaPen, FaTrash } from "react-icons/fa";
 import useDeleteData from "../../hooks/useDeleteData";
-import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
-
+import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 
 const AdminBusinessesTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,15 +20,15 @@ const AdminBusinessesTable = () => {
     data: Business[];
   }>(`businesses?page=${currentPage}`);
 
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [itemToDelete, setItemToDelete] = useState<Business | null>(null);
+  /* DELETE MODAL LOGIC */
   const {
     deleteData,
     isLoading: isLoadingDelete,
     error: errorDelete,
     data: dataDelete,
   } = useDeleteData("businesses");
-
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<Business | null>(null);
   const handleDeleteClick = (item: Business) => {
     setItemToDelete(item);
     setIsDeleteModalOpen(true);
@@ -57,7 +56,6 @@ const AdminBusinessesTable = () => {
     }
   }, [dataDelete, errorDelete]);
 
-  
   /* DELETE SELECTED */
   const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
   const handleCheckboxChange = (id: string) => {
@@ -78,7 +76,7 @@ const AdminBusinessesTable = () => {
     isLoading: isLoadingDeleteMultiple,
     error: errorDeleteMultiple,
     data: dataDeleteMultiple,
-  } = useDeleteMultiple("businsses");
+  } = useDeleteMultiple("businesses");
   const [isDeleteMultipleModalOpen, setIsDeleteMultipleModalOpen] =
     useState(false);
   const handleConfirmDeleteMultiple = async () => {
@@ -99,7 +97,7 @@ const AdminBusinessesTable = () => {
     }
   }, [dataDeleteMultiple, errorDeleteMultiple]);
 
-
+  
   // const {
   //   isLoading,
   //   error,
@@ -121,15 +119,17 @@ const AdminBusinessesTable = () => {
 
   return (
     <>
-    <ToastContainer/>
-    <DeleteConfirmDialog
+      <ToastContainer />
+
+      <DeleteConfirmDialog
         isOpen={isDeleteModalOpen}
         onCancel={handleCancel}
         onConfirm={handleConfirmDelete}
         details={itemToDelete?.name}
         isLoading={isLoadingDelete}
       />
-        <DeleteConfirmDialog
+
+      <DeleteConfirmDialog
         isOpen={isDeleteMultipleModalOpen}
         onCancel={() => setIsDeleteMultipleModalOpen(false)}
         onConfirm={handleConfirmDeleteMultiple}
@@ -137,36 +137,65 @@ const AdminBusinessesTable = () => {
         isLoading={isLoadingDeleteMultiple}
       />
 
-    <Link to={"/admin/users/new"}>
-    <FloatingActionButtonAdd />
-    </Link>
-  <main className="p-page">
-  <h1 className="text-4xl font-bold">Businesses</h1>
-      <div className="my-4">
-    {isLoading?(
-      <span>Loading...</span>
-    ):error ?(
-      <span>{error}</span>
-    ):data?(
-    <table className="admin-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Address</th>
-          <th>Description</th>
-          <th>Category</th>
-          <th>Image</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.data.map((item) => (
-          <tr key={item.id}>
-                <td>
+      <Pagination
+        totalItems={data?.total || 0}
+        itemsPerPage={data?.pageSize || 0}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+
+      <main className="p-page flex flex-col mb-24">
+        <h1 className="text-4xl font-bold">Businesses</h1>
+        {selectedUserIds.length !== 0 ? (
+          <div className="flex gap-4 self-end my-4">
+            <button
+              onClick={() => setIsDeleteMultipleModalOpen(true)}
+              className="min-w-32 rounded px-4 py-1 bg-red-800"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <FaTrash color="white" />
+                <span className="text-white">
+                  {selectedUserIds.length} selected
+                </span>
+              </div>
+            </button>
+            <button
+              onClick={handleUnselectAll}
+              className="min-w-32 rounded px-3 py-1 bg-accent"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-white">unselect all</span>
+              </div>
+            </button>
+          </div>
+        ) : (
+          <div className="my-4" />
+        )}
+        {isLoading ? (
+          <span>Loading...</span>
+        ) : error ? (
+          <span>{error}</span>
+        ) : data ? (
+          <>
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Image</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.data.map((item) => (
+                  <tr key={item.id}>
+                    <td>
                       <input
                         className="accent-accent"
                         type="checkbox"
@@ -175,18 +204,18 @@ const AdminBusinessesTable = () => {
                       />
                     </td>
                     <td>{item.id}</td>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.phone}</td>
-                    <td>{item.address}</td>
-                    <td>{item.description}</td>
-                    <td>{item.category.name}</td>
-                    <td>
+                     <td>{item.name}</td>
+                     <td>{item.email}</td>
+                     <td>{item.phone}</td>
+                     <td>{item.address}</td>
+                     <td>{item.description}</td>
+                     <td>{item.category.name}</td>
+                     <td>
                       <img className="w-12 h-12" src={item.image} />
                     </td>
                     <td>
                       <div className="flex justify-center gap-4">
-                        <Link to="/admin/users">
+                        <Link to={item.id} state={item}>
                           <button className="bg-blue-800 py-1 px-2 rounded">
                             <FaPen color="white" />
                           </button>
@@ -199,19 +228,13 @@ const AdminBusinessesTable = () => {
                         </button>
                       </div>
                     </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    ):null}
-     <Pagination
-          totalItems={data?.total || 0}
-          itemsPerPage={data?.pageSize || 0}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-    </div>
-    </main>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        ) : null}
+      </main>
     </>
   );
 };
