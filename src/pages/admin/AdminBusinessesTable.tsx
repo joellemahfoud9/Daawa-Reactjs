@@ -9,6 +9,7 @@ import useDeleteData from "../../hooks/useDeleteData";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
+import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 
 
 const AdminBusinessesTable = () => {
@@ -56,6 +57,49 @@ const AdminBusinessesTable = () => {
     }
   }, [dataDelete, errorDelete]);
 
+  
+  /* DELETE SELECTED */
+  const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
+  const handleCheckboxChange = (id: string) => {
+    setSelectedUserIds((prevSelected) => {
+      if (prevSelected.includes(id)) {
+        return prevSelected.filter((userId) => userId !== id);
+      } else {
+        return [...prevSelected, id];
+      }
+    });
+  };
+  const handleUnselectAll = () => {
+    setSelectedUserIds([]);
+  };
+  /* API DELETE SELECTED */
+  const {
+    deleteMultiple,
+    isLoading: isLoadingDeleteMultiple,
+    error: errorDeleteMultiple,
+    data: dataDeleteMultiple,
+  } = useDeleteMultiple("businsses");
+  const [isDeleteMultipleModalOpen, setIsDeleteMultipleModalOpen] =
+    useState(false);
+  const handleConfirmDeleteMultiple = async () => {
+    try {
+      await deleteMultiple({ userIds: selectedUserIds });
+      setIsDeleteMultipleModalOpen(false);
+      setSelectedUserIds([]);
+    } catch (error) {
+      setIsDeleteModalOpen(false);
+    }
+  };
+  useEffect(() => {
+    if (dataDeleteMultiple) {
+      toast.success(`deleted successfully!`);
+    }
+    if (errorDeleteMultiple) {
+      toast.error(`Failed to delete. Please try again.`);
+    }
+  }, [dataDeleteMultiple, errorDeleteMultiple]);
+
+
   // const {
   //   isLoading,
   //   error,
@@ -78,6 +122,7 @@ const AdminBusinessesTable = () => {
   return (
     <>
     <ToastContainer/>
+
     <DeleteConfirmDialog
         isOpen={isDeleteModalOpen}
         onCancel={handleCancel}
@@ -85,18 +130,50 @@ const AdminBusinessesTable = () => {
         details={itemToDelete?.name}
         isLoading={isLoadingDelete}
       />
+        <DeleteConfirmDialog
+        isOpen={isDeleteMultipleModalOpen}
+        onCancel={() => setIsDeleteMultipleModalOpen(false)}
+        onConfirm={handleConfirmDeleteMultiple}
+        details={`${selectedUserIds.length} businesses`}
+        isLoading={isLoadingDeleteMultiple}
+      />
 
     <Link to={"/admin/users/new"}>
     <FloatingActionButtonAdd />
     </Link>
-  <main className="p-page">
+  <main className="p-page flex flex-col mb-24">
   <h1 className="text-4xl font-bold">Businesses</h1>
-      <div className="my-4">
+  {selectedUserIds.length !== 0 ? (
+          <div className="flex gap-4 self-end my-4">
+            <button
+              onClick={() => setIsDeleteMultipleModalOpen(true)}
+              className="min-w-32 rounded px-4 py-1 bg-red-800"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <FaTrash color="white" />
+                <span className="text-white">
+                  {selectedUserIds.length} selected
+                </span>
+              </div>
+            </button>
+            <button
+              onClick={handleUnselectAll}
+              className="min-w-32 rounded px-3 py-1 bg-accent"
+            >
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-white">unselect all</span>
+              </div>
+            </button>
+          </div>
+        ) : (
+      <div className="my-4"/>
+         )}
     {isLoading?(
       <span>Loading...</span>
     ):error ?(
       <span>{error}</span>
     ):data?(
+      <>
     <table className="admin-table">
       <thead>
         <tr>
@@ -119,8 +196,8 @@ const AdminBusinessesTable = () => {
                       <input
                         className="accent-accent"
                         type="checkbox"
-                        //checked={selectedUserIds.includes(user.id)}
-                        //onChange={() => handleCheckboxChange(user.id)}
+                        checked={selectedUserIds.includes(item.id)}
+                        onChange={() => handleCheckboxChange(item.id)}
                       />
                     </td>
             <td>{item.id}</td>
@@ -152,14 +229,14 @@ const AdminBusinessesTable = () => {
         ))}
       </tbody>
     </table>
-    ):null}
+    </>
+  ) :null} 
      <Pagination
           totalItems={data?.total || 0}
           itemsPerPage={data?.pageSize || 0}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
-    </div>
     </main>
     </>
   );
