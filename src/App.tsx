@@ -14,6 +14,7 @@ import AdminUsersEdit from "./pages/admin/AdminUsersEdit";
 import AdminUsersEditPassword from "./pages/admin/AdminUsersEditPassword";
 import AdminBusinessesTable from "./pages/admin/AdminBusinessesTable";
 import AdminCollectionsNew from "./pages/admin/AdminCollectionsNew";
+import AdminBusinessesEdit from "./pages/admin/AdminBusinessesEdit";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="users/:id" element={<AdminUsersEdit />} />
         <Route path="users/password/:id" element={<AdminUsersEditPassword />} />
         <Route path="businesses" element={<AdminBusinessesTable />} />
+        <Route path="businesses/:id" element={<AdminBusinessesEdit/>}/>
         <Route path="collections/new" element={<AdminCollectionsNew />} />
       </Route>
     </Routes>
