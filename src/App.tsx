@@ -14,6 +14,10 @@ import AdminUsersEdit from "./pages/admin/AdminUsersEdit";
 import AdminUsersEditPassword from "./pages/admin/AdminUsersEditPassword";
 import AdminBusinessesTable from "./pages/admin/AdminBusinessesTable";
 import AdminCollectionsNew from "./pages/admin/AdminCollectionsNew";
+import AdminCollections from "./pages/admin/AdminCollections";
+import AdminCategories from "./pages/admin/AdminCategories";
+import AdminCategoriesNew from "./pages/admin/AdminCategoriesNew";
+import AdminCategoryEdit from "./pages/admin/AdminCategoryEdit";
 
 function App() {
   return (
@@ -37,6 +41,10 @@ function App() {
         <Route path="users/:id" element={<AdminUsersEdit />} />
         <Route path="users/password/:id" element={<AdminUsersEditPassword />} />
         <Route path="businesses" element={<AdminBusinessesTable />} />
+        <Route path="categories" element={<AdminCategories />} />
+        <Route path="categories/new" element={<AdminCategoriesNew />} />
+        <Route path="categories/:id" element={<AdminCategoryEdit />} />
+        <Route path="collections" element={<AdminCollections />} />
         <Route path="collections/new" element={<AdminCollectionsNew />} />
       </Route>
     </Routes>
