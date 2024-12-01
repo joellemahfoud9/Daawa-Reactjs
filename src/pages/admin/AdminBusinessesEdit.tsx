@@ -2,7 +2,6 @@ import {useEffect, useState } from "react";
 import {Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import usePatchdata from "../../hooks/usePatchData";
-import { Businesses } from "../../constant";
 
 const AdminBusinessesEdit = () => {
     const { state } = useLocation();
@@ -14,8 +13,8 @@ const AdminBusinessesEdit = () => {
       phone: state.phone || "",
       address: state.address || "",
       description:state.description || "",
-      category: state.category || "",
-      image: state.image || "",
+      category: state.category.name || "",
+       //image: state.image ||"",
     });
 
     const handleInputChange = (
@@ -27,6 +26,7 @@ const AdminBusinessesEdit = () => {
           [name]: value,
         }));
       };
+
     
       const { patchData, isLoading, error, data } = usePatchdata({
         endpoint: `businesses/${state.id}`,
@@ -81,11 +81,12 @@ const AdminBusinessesEdit = () => {
                       className="border"
                     />
                   ) : attr==="image" ?(
-                    <input
-                    name={attr}
-                    
-                    onChange={handleInputChange}/>
-
+                    <div className="flex">
+                        <img className="w-20 h-20" src={state.image}/>
+                        <input 
+                        type="file"
+                        onChange={handleInputChange}/>
+                    </div>
                   ) : null}
                   </td>
                  </tr>
@@ -94,14 +95,6 @@ const AdminBusinessesEdit = () => {
             </tbody>
         </table>
         <div className="flex gap-4 fixed bottom-12 right-12">
-            <Link
-              className="w-36 bg-gray-200 text-accent px-4 py-2 rounded text-center"
-              to={`/admin/businesses/password/${state.id}`}
-              state={state}
-            >
-              Password
-            </Link>
-
             <button
               type="submit"
               className="w-36 bg-accent text-white px-4 py-2 rounded focus:outline-amber-400"

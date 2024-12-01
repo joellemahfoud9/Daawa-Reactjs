@@ -10,6 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
+import AddFAB from "../../components/Admin/AddFAB";
 
 const AdminBusinessesTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -120,6 +121,10 @@ const AdminBusinessesTable = () => {
   return (
     <>
       <ToastContainer />
+
+      <Link to={"/admin/businesses/new"}>
+        <AddFAB />
+      </Link>
 
       <DeleteConfirmDialog
         isOpen={isDeleteModalOpen}
