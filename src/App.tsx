@@ -19,6 +19,7 @@ import AdminCategories from "./pages/admin/AdminCategories";
 import AdminCategoriesNew from "./pages/admin/AdminCategoriesNew";
 import AdminCategoryEdit from "./pages/admin/AdminCategoryEdit";
 import AdminBusinessesEdit from "./pages/admin/AdminBusinessesEdit";
+import AdminBusinessesNew from "./pages/admin/AdminBusinessesNew";
 import CategoriesBusinesses from "./pages/user/CategoriesBusinesses";
 import BusinessDetails from "./pages/user/BusinessDetails";
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="users/:id" element={<AdminUsersEdit />} />
         <Route path="users/password/:id" element={<AdminUsersEditPassword />} />
         <Route path="businesses" element={<AdminBusinessesTable />} />
+        <Route path="businesses/new" element={<AdminBusinessesNew />} />
         <Route path="businesses/:id" element={<AdminBusinessesEdit />} />
         <Route path="categories" element={<AdminCategories />} />
         <Route path="categories/new" element={<AdminCategoriesNew />} />
