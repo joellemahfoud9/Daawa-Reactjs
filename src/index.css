@@ -14,3 +14,25 @@
 .admin-table > thead > tr > th {
   @apply border px-3 py-3 bg-accent text-white;
 }
+
+.scroll-hr {
+  @apply overflow-x-auto flex flex-shrink-0 flex-nowrap;
+}
+
+.hide-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling for touch devices */
+  overflow: auto;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.hide-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}

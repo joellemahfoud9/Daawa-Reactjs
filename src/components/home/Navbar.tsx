@@ -8,8 +8,8 @@ interface Props {
 
 const Navbar = ({ simpleLogo }: Props) => {
   return (
-    <nav className=" shadow-sm relative">
-      <div className="container mx-auto flex justify-between px-2">
+    <nav className="shadow-sm relative">
+      <div className="flex justify-between px-8">
         {/* Left side */}
         <div className="w-1/2 flex items-center justify-start space-x-4 text-2xl">
           <Link to="/" className="text-gray-700 hover:text-gray-900">

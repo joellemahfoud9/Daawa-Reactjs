@@ -10,7 +10,7 @@ interface Props {
 const BusinessCard = ({ business, selected, onClick }: Props) => {
   return (
     <div
-      className="flex relative h-52 w-52 
+      className="flex relative min-h-52 min-w-52 
     bg-gradient-to-t from-accent/60
     rounded-3xl overflow-hidden shadow
     transition-all duration-500 hover:bg-accent hover:bg-opacity-25"

@@ -19,6 +19,8 @@ import AdminCategories from "./pages/admin/AdminCategories";
 import AdminCategoriesNew from "./pages/admin/AdminCategoriesNew";
 import AdminCategoryEdit from "./pages/admin/AdminCategoryEdit";
 import AdminBusinessesEdit from "./pages/admin/AdminBusinessesEdit";
+import CategoriesBusinesses from "./pages/user/CategoriesBusinesses";
+import BusinessDetails from "./pages/user/BusinessDetails";
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
         <Route path="/category/:categoryName" element={<AllCategories />} />
         <Route path="/planners" element={<WiddingPlanners />} />
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="page01" element={<CategoriesBusinesses />} />
+        <Route path="page01/:id" element={<BusinessDetails />} />
       </Route>
       <Route
         path="/category/:categoryName/:companyId"
@@ -47,7 +52,6 @@ function App() {
         <Route path="categories/new" element={<AdminCategoriesNew />} />
         <Route path="categories/:id" element={<AdminCategoryEdit />} />
         <Route path="collections" element={<AdminCollections />} />
-
         <Route path="collections/new" element={<AdminCollectionsNew />} />
       </Route>
     </Routes>
