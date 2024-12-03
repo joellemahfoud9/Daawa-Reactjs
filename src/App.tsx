@@ -22,6 +22,7 @@ import AdminBusinessesEdit from "./pages/admin/AdminBusinessesEdit";
 import AdminBusinessesNew from "./pages/admin/AdminBusinessesNew";
 import CategoriesBusinesses from "./pages/user/CategoriesBusinesses";
 import BusinessDetails from "./pages/user/BusinessDetails";
+import CategoryBusinesses from "./pages/user/CategoryBusinesses";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
         <Route path="page01" element={<CategoriesBusinesses />} />
         <Route path="page01/:id" element={<BusinessDetails />} />
+        <Route path="page02/:id" element={<CategoryBusinesses />} />
       </Route>
       <Route
         path="/category/:categoryName/:companyId"

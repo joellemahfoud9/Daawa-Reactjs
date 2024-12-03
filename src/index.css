@@ -22,8 +22,7 @@
 .hide-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
-
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling for touch devices */
+  -webkit-overflow-scrolling: touch;
   overflow: auto;
 }
 .hide-scrollbar::-webkit-scrollbar {
