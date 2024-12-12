@@ -62,7 +62,7 @@ const Navbar = ({ simpleLogo }: Props) => {
 
             {/* Shopping Cart */}
             <Link
-              to="/cart"
+              to="/page03"
               className="relative text-gray-700 hover:text-gray-900"
             >
               <GiShoppingBag size={24} />

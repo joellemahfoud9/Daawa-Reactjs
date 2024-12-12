@@ -4,6 +4,7 @@ import OurServices from "./pages/OurServices";
 import AllCategories from "./pages/AllCategories";
 import WiddingPlanners from "./pages/WiddingPlanners";
 import Cart from "./pages/Cart";
+import CartPage from "./pages/user/CartPage";
 import DetailsCompany from "./pages/CompanyDetails";
 import WeddingPlannerCard from "./components/Planners/WeddingPlannerCard";
 import UserLayout from "./layouts/UserLayout";
@@ -23,8 +24,26 @@ import AdminBusinessesNew from "./pages/admin/AdminBusinessesNew";
 import CategoriesBusinesses from "./pages/user/CategoriesBusinesses";
 import BusinessDetails from "./pages/user/BusinessDetails";
 import CategoryBusinesses from "./pages/user/CategoryBusinesses";
+import { useAtomValue } from "jotai";
+import { cartItemsAtom } from "./atoms";
+import { useEffect } from "react";
 
 function App() {
+  const cartItems = useAtomValue(cartItemsAtom);
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (cartItems.length > 0) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [cartItems]);
+
   return (
     <Routes>
       <Route element={<UserLayout />}>
@@ -37,6 +56,7 @@ function App() {
         <Route path="page01" element={<CategoriesBusinesses />} />
         <Route path="page01/:id" element={<BusinessDetails />} />
         <Route path="page02/:id" element={<CategoryBusinesses />} />
+        <Route path="page03" element={<CartPage />} />
       </Route>
       <Route
         path="/category/:categoryName/:companyId"
