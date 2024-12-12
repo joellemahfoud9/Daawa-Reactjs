@@ -26,12 +26,16 @@ const usePostData = <T>({
     setError(null);
 
     try {
+      const isFormData = body instanceof FormData;
+
       const response = await fetch(API_URL + endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
+        headers: isFormData
+          ? {}
+          : {
+              "Content-Type": "application/json",
+            },
+        body: isFormData ? body : JSON.stringify(body),
       });
 
       if (!response.ok) {

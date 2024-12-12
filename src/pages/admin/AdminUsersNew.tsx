@@ -4,6 +4,7 @@ import usePostData from "../../hooks/usePostData";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SubmitFAB from "../../components/Admin/SubmitFAB";
+import DropDownMenu from "../../components/Admin/DropDownMenu";
 
 const AdminUsersNew = () => {
   const [formData, setFormData] = useState({
@@ -89,23 +90,17 @@ const AdminUsersNew = () => {
             value={formData.password}
           />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Role
-            </label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="">Select Role</option>
-              <option value="USER">1 - User</option>
-              <option value="ADMIN">2 - Admin</option>
-              <option value="MODERATOR">3 - Moderator</option>
-            </select>
-            {/* {errors.role && <p className="text-red-500 text-xs">{errors.role}</p>} */}
-          </div>
+          <DropDownMenu
+            label="Role"
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            options={[
+              { value: "USER", name: "1 - User" },
+              { value: "ADMIN", name: "2 - Admin" },
+              { value: "MODERATOR", name: "3 - Moderator" },
+            ]}
+          />
 
           <SubmitFAB isLoading={isLoading}>Add User</SubmitFAB>
         </form>
