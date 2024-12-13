@@ -182,6 +182,18 @@ const AdminBusinessesEdit = () => {
             </tbody>
           </table>
           <div className="flex gap-4 fixed bottom-12 right-12">
+            <Link to={"hours"} state={state}>
+              <div className="flex items-center gap-2 bg-green-900 rounded text-white px-4 py-2 focus:outline-amber-400">
+                <FaPlusSquare />
+                <span>Hours</span>
+              </div>
+            </Link>
+            <Link to={"dishes"} state={state}>
+              <div className="flex items-center gap-2 bg-amber-900 rounded text-white px-4 py-2 focus:outline-amber-400">
+                <FaPlusSquare />
+                <span>Dishes</span>
+              </div>
+            </Link>
             <button
               type="submit"
               className="w-36 bg-accent text-white px-4 py-2 rounded focus:outline-amber-400"
@@ -189,12 +201,6 @@ const AdminBusinessesEdit = () => {
             >
               {isLoading ? "Saving..." : "Save Changes"}
             </button>
-            <Link to={"hours"} state={state}>
-              <div className="flex items-center gap-2 bg-green-900 rounded text-white px-4 py-2 focus:outline-amber-400">
-                <FaPlusSquare />
-                <span>Hours</span>
-              </div>
-            </Link>
           </div>
         </form>
       </main>

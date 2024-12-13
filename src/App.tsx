@@ -28,6 +28,7 @@ import { useAtomValue } from "jotai";
 import { cartItemsAtom } from "./atoms";
 import { useEffect } from "react";
 import AdminBusinessHours from "./pages/admin/AdminBusinessHours";
+import AdminBusinessDishes from "./pages/admin/AdminBusinessDishes";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -74,6 +75,7 @@ function App() {
         <Route path="businesses/new" element={<AdminBusinessesNew />} />
         <Route path="businesses/:id" element={<AdminBusinessesEdit />} />
         <Route path="businesses/:id/hours" element={<AdminBusinessHours />} />
+        <Route path="businesses/:id/dishes" element={<AdminBusinessDishes />} />
         <Route path="categories" element={<AdminCategories />} />
         <Route path="categories/new" element={<AdminCategoriesNew />} />
         <Route path="categories/:id" element={<AdminCategoryEdit />} />

@@ -85,32 +85,64 @@ const BusinessDetails = () => {
               </div>
             </section>
 
+            <hr className="my-8" />
+
             <section className="flex justify-between">
               <div className="w-1/2">
-                <h1 className="text-4xl font-bold">Hours:</h1>
+                <h1 className="text-4xl font-bold mb-4">Hours:</h1>
                 <ul>
-                  {data.data.hours.map((hour) => (
-                    <li
-                      key={hour.id}
-                    >{`${hour.day}: ${hour.start} - ${hour.end}`}</li>
-                  ))}
+                  {data.data.hours
+                    .sort((a, b) => {
+                      const daysOfWeek = [
+                        "MON",
+                        "TUE",
+                        "WED",
+                        "THU",
+                        "FRI",
+                        "SAT",
+                        "SUN",
+                      ];
+                      return (
+                        daysOfWeek.indexOf(a.day) - daysOfWeek.indexOf(b.day)
+                      );
+                    })
+                    .map((hour) => (
+                      <tr key={hour.day + hour.start + hour.end}>
+                        <td className="px-2 flex justify-end">{hour.day}:</td>
+                        <td className="px-2">{hour.start}</td>
+                        <td>-</td>
+                        <td className="px-2">{hour.end}</td>
+                      </tr>
+                    ))}
                 </ul>
               </div>
               <div className="w-1/2">
-                <h1 className="text-4xl font-bold">Dishes:</h1>
-                <ul>
-                  {data.data.dishes.map((dish) => (
-                    <li key={dish.id}>
-                      <div className="flex gap-2">
-                        <img
-                          className="w-4 h-4 object-cover"
-                          src={dish.image}
-                        />
-                        {`${dish.name}: ${dish.type} - ${dish.description} - ${dish.price}`}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                <h1 className="text-4xl font-bold mb-4">Dishes:</h1>
+                <table>
+                  <thead>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                  </thead>
+                  <tbody>
+                    {data.data.dishes.map((dish) => (
+                      <tr key={dish.id}>
+                        <td className="px-2 flex justify-end">
+                          <img
+                            className="w-16 h-16 object-cover"
+                            src={dish.image}
+                          />
+                        </td>
+                        <td className="px-2">{dish.name}</td>
+                        <td className="px-2">{dish.description}</td>
+                        <td className="px-2">{dish.type}</td>
+                        <td className="px-2">{`${dish.price}`}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </section>
           </>
