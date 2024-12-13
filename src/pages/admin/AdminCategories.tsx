@@ -151,7 +151,6 @@ const AdminCategories = () => {
             <thead>
               <tr>
                 <th></th>
-                <th>id</th>
                 <th>name</th>
                 <th></th>
               </tr>
@@ -167,7 +166,6 @@ const AdminCategories = () => {
                       onChange={() => handleCheckboxChange(category.id)}
                     />
                   </td>
-                  <td>{category.id}</td>
                   <td>{category.name}</td>
                   <td>
                     <div className="flex justify-center gap-4">

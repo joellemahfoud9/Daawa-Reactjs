@@ -27,6 +27,13 @@ export interface Hour {
   businessId: string;
 }
 
-export interface Dish {}
+export interface Dish {
+  id: string;
+  name: string;
+  description: string;
+  type: string; // MAIN, SIDE, DESSERT, APPETIZER
+  price: 23.5;
+  image: string;
+}
 
 export interface Attribute {}

@@ -153,7 +153,6 @@ const AdminCollections = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>id</th>
                   <th>name</th>
                   <th></th>
                 </tr>
@@ -169,7 +168,6 @@ const AdminCollections = () => {
                         onChange={() => handleCheckboxChange(collection.id)}
                       />
                     </td>
-                    <td>{collection.id}</td>
                     <td>{collection.name}</td>
                     <td>
                       <div className="flex justify-center gap-4">

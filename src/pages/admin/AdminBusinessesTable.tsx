@@ -98,7 +98,6 @@ const AdminBusinessesTable = () => {
     }
   }, [dataDeleteMultiple, errorDeleteMultiple]);
 
-  
   // const {
   //   isLoading,
   //   error,
@@ -186,7 +185,6 @@ const AdminBusinessesTable = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>ID</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Phone</th>
@@ -208,14 +206,13 @@ const AdminBusinessesTable = () => {
                         onChange={() => handleCheckboxChange(item.id)}
                       />
                     </td>
-                    <td>{item.id}</td>
-                     <td>{item.name}</td>
-                     <td>{item.email}</td>
-                     <td>{item.phone}</td>
-                     <td>{item.address}</td>
-                     <td>{item.description}</td>
-                     <td>{item.category.name}</td>
-                     <td>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.address}</td>
+                    <td>{item.description}</td>
+                    <td>{item.category.name}</td>
+                    <td>
                       <img className="w-12 h-12" src={item.image} />
                     </td>
                     <td>

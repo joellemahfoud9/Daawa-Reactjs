@@ -47,42 +47,73 @@ const BusinessDetails = () => {
         ) : error ? (
           <span>{error}</span>
         ) : data ? (
-          <section className="w-full flex gap-8">
-            <div className="flex gap-12 bg-gray-200 p-12 w-1/2 rounded-xl">
-              <img
-                className="w-52 h-52 rounded object-cover"
-                src={data.data.image}
-              />
-              <div className="flex flex-col justify-around text-nowrap">
-                <span className="text-4xl font-bold">{data.data.name}</span>
-                <span>
-                  <span className="text-gray-400">category:</span>
-                  {` ` + data.data.category.name}
-                </span>
-                <span>
-                  <span className="text-gray-400">email:</span>
-                  {` ` + data.data.email}
-                </span>
-                <span>
-                  <span className="text-gray-400">phone:</span>
-                  {` ` + data.data.phone}
-                </span>
+          <>
+            <section className="w-full flex gap-8">
+              <div className="flex gap-12 bg-gray-200 p-12 w-1/2 rounded-xl">
+                <img
+                  className="w-52 h-52 rounded object-cover"
+                  src={data.data.image}
+                />
+                <div className="flex flex-col justify-around text-nowrap">
+                  <span className="text-4xl font-bold">{data.data.name}</span>
+                  <span>
+                    <span className="text-gray-400">category:</span>
+                    {` ` + data.data.category.name}
+                  </span>
+                  <span>
+                    <span className="text-gray-400">email:</span>
+                    {` ` + data.data.email}
+                  </span>
+                  <span>
+                    <span className="text-gray-400">phone:</span>
+                    {` ` + data.data.phone}
+                  </span>
+                </div>
               </div>
-            </div>
 
-            <div className="w-1/2 flex flex-col gap-6">
-              <div>
-                <h1 className="text-4xl font-bold">Description:</h1>
-                <br />
-                {data.data.description}
+              <div className="w-1/2 flex flex-col gap-6">
+                <div>
+                  <h1 className="text-4xl font-bold">Description:</h1>
+                  <br />
+                  {data.data.description}
+                </div>
+                <div>
+                  <h1 className="text-4xl font-bold">Address:</h1>
+                  <br />
+                  {data.data.address}
+                </div>
               </div>
-              <div>
-                <h1 className="text-4xl font-bold">Address:</h1>
-                <br />
-                {data.data.address}
+            </section>
+
+            <section className="flex justify-between">
+              <div className="w-1/2">
+                <h1 className="text-4xl font-bold">Hours:</h1>
+                <ul>
+                  {data.data.hours.map((hour) => (
+                    <li
+                      key={hour.id}
+                    >{`${hour.day}: ${hour.start} - ${hour.end}`}</li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </section>
+              <div className="w-1/2">
+                <h1 className="text-4xl font-bold">Dishes:</h1>
+                <ul>
+                  {data.data.dishes.map((dish) => (
+                    <li key={dish.id}>
+                      <div className="flex gap-2">
+                        <img
+                          className="w-4 h-4 object-cover"
+                          src={dish.image}
+                        />
+                        {`${dish.name}: ${dish.type} - ${dish.description} - ${dish.price}`}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          </>
         ) : null}
       </main>
     </>

@@ -165,7 +165,6 @@ const AdminUsersTable = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>id</th>
                   <th>name</th>
                   <th>email</th>
                   <th>phone</th>
@@ -185,7 +184,6 @@ const AdminUsersTable = () => {
                         onChange={() => handleCheckboxChange(user.id)}
                       />
                     </td>
-                    <td>{user.id}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.phone}</td>

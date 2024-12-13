@@ -9,11 +9,19 @@ import { toast, ToastContainer } from "react-toastify";
 import LabeledTextInput from "../../components/Admin/LabeledTextInput";
 
 const AdminCollectionsNew = () => {
+  const [currPage, setCurrPage] = useState(1);
+
   const {
     isLoading,
     error,
     data: businesses,
-  } = useGetData<{ data: Business[] }>("businesses");
+  } = useGetData<{
+    data: Business[];
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+  }>(`businesses?page=${currPage}`);
 
   const [selectedBusinesses, setSelectedBusinesses] = useState<string[]>([]);
 
@@ -83,14 +91,16 @@ const AdminCollectionsNew = () => {
 
         <form onSubmit={handleSubmit}>
           {selectedBusinesses.length !== 0 && (
-            <div className="flex justify-between">
-              <LabeledTextInput
-                label="Name"
-                placeholder=""
-                handleChange={handleChange}
-                name="name"
-                value={formData.name}
-              />
+            <div className="flex justify-between items-end">
+              <div>
+                <LabeledTextInput
+                  label="Name"
+                  placeholder=""
+                  handleChange={handleChange}
+                  name="name"
+                  value={formData.name}
+                />
+              </div>
               <button
                 className="min-w-32 rounded px-3 py-1 bg-accent text-white"
                 onClick={() => {
@@ -126,10 +136,10 @@ const AdminCollectionsNew = () => {
           </section>
 
           <Pagination
-            currentPage={1}
-            itemsPerPage={10}
-            setCurrentPage={() => {}}
-            totalItems={20}
+            currentPage={businesses?.page || 1}
+            itemsPerPage={businesses?.pageSize || 1}
+            setCurrentPage={setCurrPage}
+            totalItems={businesses?.total || 1}
           />
 
           <SubmitFAB isLoading={isLoadingPost}>Create Collection</SubmitFAB>

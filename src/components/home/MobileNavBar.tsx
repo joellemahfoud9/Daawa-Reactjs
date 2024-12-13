@@ -1,11 +1,14 @@
+import { useAtomValue } from "jotai";
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { GiShoppingBag } from "react-icons/gi";
 import { MdMenu } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { cartItemsAtom } from "../../atoms";
 
 const MobileNavBar = () => {
   const [isShown, setIsShown] = useState(false);
+  const cartItems = useAtomValue(cartItemsAtom);
   return (
     <>
       <div className="w-full h-24 flex justify-between items-center px-4 shadow">
@@ -33,7 +36,15 @@ const MobileNavBar = () => {
             </Link>
 
             {/* Shopping Cart */}
-            <Link to="/cart" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/cart"
+              className="relative text-gray-700 hover:text-gray-900"
+            >
+              {cartItems.length !== 0 ? (
+                <div className="absolute -top-2 -right-2 bg-amber-600 w-5 h-5 rounded-full text-xs text-white flex items-center justify-center">
+                  {cartItems.length}
+                </div>
+              ) : null}
               <GiShoppingBag size={24} />
             </Link>
           </div>
