@@ -9,6 +9,7 @@ import {
   MdFilter,
   MdFilter1,
   MdFilter5,
+  MdOutlineEqualizer,
 } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -39,6 +40,12 @@ const AdminSideBar = () => {
           <div className="flex items-center gap-4 text-xl">
             <MdCollectionsBookmark />
             <span>Collections</span>
+          </div>
+        </Link>
+        <Link to={"/admin/statistics"}>
+          <div className="flex items-center gap-4 text-xl">
+            <MdOutlineEqualizer />
+            <span>Statistics</span>
           </div>
         </Link>
       </div>

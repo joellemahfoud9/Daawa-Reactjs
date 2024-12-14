@@ -29,6 +29,7 @@ import { cartItemsAtom } from "./atoms";
 import { useEffect } from "react";
 import AdminBusinessHours from "./pages/admin/AdminBusinessHours";
 import AdminBusinessDishes from "./pages/admin/AdminBusinessDishes";
+import AdminStats from "./pages/admin/AdminStats";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -81,6 +82,7 @@ function App() {
         <Route path="categories/:id" element={<AdminCategoryEdit />} />
         <Route path="collections" element={<AdminCollections />} />
         <Route path="collections/new" element={<AdminCollectionsNew />} />
+        <Route path="statistics" element={<AdminStats />} />
       </Route>
     </Routes>
   );
