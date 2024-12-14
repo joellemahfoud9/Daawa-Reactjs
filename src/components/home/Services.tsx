@@ -1,6 +1,17 @@
-import { services } from "../../constant";
+import { useState } from "react";
+import useGetData from "../../hooks/useGetData";
+import { Business } from "../../models/Business";
+
 
 const Services = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { isLoading, error, data } = useGetData<{
+    total: number;
+    pageSize: number;
+    data: Business[];
+  }>(`businesses?page=${currentPage}`);
+
   return (
     <div className="flex flex-col items-center bg-white w-full">
       <div className="w-full max-w-7xl mb-5 px-4">
@@ -16,24 +27,29 @@ const Services = () => {
           </h2>
         </div>
       </div>
-
+        {isLoading ?(
+          <span>Loading...</span>
+        ): error ? (
+          <span>{error}</span>
+        ) : data ? (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-7xl w-full px-4">
-        {services.map((service, index) => (
+        {data.data.map((service) => (
           <div
-            key={index}
+            key={service.id}
             className="relative bg-cover bg-center h-80 rounded-lg overflow-hidden shadow-lg"
           >
             <img
-              src={service.imageUrl}
-              alt={service.title}
+              src={service.image}
+              alt={service.name}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-30 flex justify-center items-center text-gray-100 text-2xl font-light">
-              {service.title}
+              {service.name}
             </div>
           </div>
         ))}
       </div>
+      ) : null}
     </div>
   );
 };

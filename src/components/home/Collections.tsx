@@ -1,6 +1,6 @@
 import { packages } from "../../constant";
 
-const Packages = () => {
+const Collections = () => {
   return (
     <div className="flex flex-col items-center py-12 bg-white">
       <h2 className="text-4xl font-bold text-gray-800 mb-8 max-sm:text-base">
@@ -33,4 +33,4 @@ const Packages = () => {
   );
 };
 
-export default Packages;
+export default Collections;
