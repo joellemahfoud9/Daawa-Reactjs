@@ -13,6 +13,9 @@ import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 
 const AdminBusinessAttributes = () => {
   const { id } = useParams();
+  const { data: attributes } = useGetData<{ data: Attribute[] }>(
+    `businesses/${id}/attributes`
+  );
 
   const options = [
     { name: "Capacity", value: "capacity" },
@@ -34,10 +37,6 @@ const AdminBusinessAttributes = () => {
       [name]: value,
     }));
   };
-
-  const { data: attributes } = useGetData<{ data: Attribute[] }>(
-    `businesses/${id}/attributes`
-  );
 
   const { postData, isLoading, error, data } = usePostData({
     endpoint: `attributes`,
