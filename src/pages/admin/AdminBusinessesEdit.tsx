@@ -194,6 +194,12 @@ const AdminBusinessesEdit = () => {
                 <span>Dishes</span>
               </div>
             </Link>
+            <Link to={"attributes"} state={state}>
+              <div className="flex items-center gap-2 bg-purple-900 rounded text-white px-4 py-2 focus:outline-amber-400">
+                <FaPlusSquare />
+                <span>Attributes</span>
+              </div>
+            </Link>
             <button
               type="submit"
               className="w-36 bg-accent text-white px-4 py-2 rounded focus:outline-amber-400"

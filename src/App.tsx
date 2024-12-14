@@ -30,6 +30,7 @@ import { useEffect } from "react";
 import AdminBusinessHours from "./pages/admin/AdminBusinessHours";
 import AdminBusinessDishes from "./pages/admin/AdminBusinessDishes";
 import AdminStats from "./pages/admin/AdminStats";
+import AdminBusinessAttributes from "./pages/admin/AdminBusinessAttributes";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -77,6 +78,10 @@ function App() {
         <Route path="businesses/:id" element={<AdminBusinessesEdit />} />
         <Route path="businesses/:id/hours" element={<AdminBusinessHours />} />
         <Route path="businesses/:id/dishes" element={<AdminBusinessDishes />} />
+        <Route
+          path="businesses/:id/attributes"
+          element={<AdminBusinessAttributes />}
+        />
         <Route path="categories" element={<AdminCategories />} />
         <Route path="categories/new" element={<AdminCategoriesNew />} />
         <Route path="categories/:id" element={<AdminCategoryEdit />} />
