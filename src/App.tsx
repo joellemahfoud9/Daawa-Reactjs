@@ -31,6 +31,7 @@ import AdminBusinessHours from "./pages/admin/AdminBusinessHours";
 import AdminBusinessDishes from "./pages/admin/AdminBusinessDishes";
 import AdminStats from "./pages/admin/AdminStats";
 import AdminBusinessAttributes from "./pages/admin/AdminBusinessAttributes";
+import OrderDetailsCartPage from "./pages/user/OrderDetailsCartPage";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -60,6 +61,7 @@ function App() {
         <Route path="page01" element={<CategoriesBusinesses />} />
         <Route path="page01/:id" element={<BusinessDetails />} />
         <Route path="page02/:id" element={<CategoryBusinesses />} />
+        <Route path="page04" element={<OrderDetailsCartPage />} />
         <Route path="page03" element={<CartPage />} />
       </Route>
       <Route

@@ -11,7 +11,7 @@ const BusinessCard = ({ business, selected, onClick }: Props) => {
   return (
     <div
       className="flex relative min-h-52 min-w-52 
-    bg-gradient-to-t from-accent/60
+    bg-gradient-to-t from-accent/80
     rounded-3xl overflow-hidden shadow
     transition-all duration-500 hover:bg-accent hover:bg-opacity-25"
       onClick={onClick}
@@ -24,8 +24,12 @@ const BusinessCard = ({ business, selected, onClick }: Props) => {
         src={business.image}
       />
       <div className="z-10 flex flex-col flex-wrap text-white self-end p-4">
-        <span className="select-none">{business.name}</span>
-        <span className="select-none line-clamp-1">{business.address}</span>
+        <span className="select-none text-xl font-bold line-clamp-1 max-w-40">
+          {business.name}
+        </span>
+        <span className="select-none line-clamp-1 max-w-40">
+          {business.address}
+        </span>
       </div>
     </div>
   );

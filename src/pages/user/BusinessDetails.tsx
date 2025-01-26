@@ -7,6 +7,7 @@ import AddFAB from "../../components/Admin/AddFAB";
 import { MdRemoveShoppingCart } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
+import BusinessDish from "../../components/Business/BusinessDish";
 
 const BusinessDetails = () => {
   const { id } = useParams();
@@ -40,7 +41,7 @@ const BusinessDetails = () => {
         </AddFAB>
       )}
 
-      <main className="p-page">
+      <main className="p-page pb-36">
         {/* <div>BusinessDetails {id}</div> */}
         {isLoading ? (
           <span>Loading...</span>
@@ -118,7 +119,10 @@ const BusinessDetails = () => {
               </div>
               <div className="w-1/2">
                 <h1 className="text-4xl font-bold mb-4">Dishes:</h1>
-                <table>
+                {data.data.dishes.map((dish) => (
+                  <BusinessDish dish={dish} />
+                ))}
+                {/* <table>
                   <thead>
                     <th></th>
                     <th>Name</th>
@@ -129,20 +133,22 @@ const BusinessDetails = () => {
                   <tbody>
                     {data.data.dishes.map((dish) => (
                       <tr key={dish.id}>
-                        <td className="px-2 flex justify-end">
-                          <img
-                            className="w-16 h-16 object-cover"
-                            src={dish.image}
-                          />
+                        <td className="px-2">
+                          <div className="w-20 h-20 rounded-full overflow-hidden">
+                            <img
+                              className="w-full h-full object-cover p-1"
+                              src={dish.image}
+                            />
+                          </div>
                         </td>
                         <td className="px-2">{dish.name}</td>
                         <td className="px-2">{dish.description}</td>
                         <td className="px-2">{dish.type}</td>
-                        <td className="px-2">{`${dish.price}`}</td>
+                        <td className="px-2">{`$${dish.price}`}</td>
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table> */}
               </div>
             </section>
           </>

@@ -3,7 +3,6 @@ import { Business } from "../../models/Business";
 import useGetData from "../../hooks/useGetData";
 import Pagination from "../../components/Admin/Pagination";
 import { Link } from "react-router-dom";
-import FloatingActionButtonAdd from "../../components/Admin/AddFAB";
 import { FaPen, FaTrash } from "react-icons/fa";
 import useDeleteData from "../../hooks/useDeleteData";
 import { toast, ToastContainer } from "react-toastify";
@@ -213,7 +212,10 @@ const AdminBusinessesTable = () => {
                     <td>{item.description}</td>
                     <td>{item.category.name}</td>
                     <td>
-                      <img className="w-12 h-12" src={item.image} />
+                      <img
+                        className="w-12 h-12 object-cover"
+                        src={item.image}
+                      />
                     </td>
                     <td>
                       <div className="flex justify-center gap-4">

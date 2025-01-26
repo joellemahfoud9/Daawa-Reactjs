@@ -133,7 +133,7 @@ const AdminBusinessDishes = () => {
         isLoading={isLoadingDelete}
       />
 
-      <main className="p-page">
+      <main className="p-page pb-32">
         <h1 className="text-4xl font-bold mb-4">Business Dishes</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -201,12 +201,15 @@ const AdminBusinessDishes = () => {
             <tbody>
               {dishes &&
                 dishes.data.map((dish) => (
-                  <tr key={dish.id}>
+                  <tr className="border-t-4" key={dish.id}>
                     <td className="px-2">
                       <FaTimesCircle onClick={() => handleDeleteClick(dish)} />
                     </td>
-                    <td className="px-2 flex justify-end">
-                      <img className="w-8 h-8" src={dish.image} />
+                    <td className="px-2">
+                      <img
+                        className="w-16 h-16 p-1 object-cover"
+                        src={dish.image}
+                      />
                     </td>
                     <td className="px-2">{dish.name}</td>
                     <td className="px-2">{dish.description}</td>
