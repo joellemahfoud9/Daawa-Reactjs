@@ -1,27 +1,33 @@
-import { packages } from "../../constant";
+import useGetData from "../../hooks/useGetData";
+import { Collection } from "../../models/Collection";
 
 const Collections = () => {
+  const { isLoading, error, data } = useGetData<{
+    total: number;
+    pageSize: number;
+    data: Collection[];
+  }>(`collections`);
+
   return (
     <div className="flex flex-col items-center py-12 bg-white">
-      <h2 className="text-4xl font-bold text-gray-800 mb-8 max-sm:text-base">
-        SELECT YOUR COLLECTION
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
-        {packages.map((pkg) => (
+    
+    {isLoading ?(
+          <span>Loading...</span>
+        ): error ? (
+          <span>{error}</span>
+        ) : data ? (
+     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
+        {data.data.map((collection) => (
           <div
-            key={pkg.id}
+            key={collection.id}
             className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden"
           >
-            <img
-              src={pkg.imageUrl}
-              alt={pkg.title}
-              className="w-full h-64 object-cover"
-            />
+            
             <div className="p-6 text-center">
               <h3 className="text-xl font-medium text-gray-800 mb-4">
-                {pkg.title}
+                {collection.name}
               </h3>
-              <p className="text-gray-600 text-sm mb-4">{pkg.description}</p>
+              
             </div>
             <button className="w-full py-3 bg-gray-100 border-t border-gray-200 text-gray-800 font-semibold hover:bg-gray-200 transition">
               View Package Details
@@ -29,6 +35,7 @@ const Collections = () => {
           </div>
         ))}
       </div>
+         ) : null}
     </div>
   );
 };

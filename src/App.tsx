@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import OurServices from "./pages/OurServices";
 import AllCategories from "./pages/AllCategories";
-import WiddingPlanners from "./pages/WiddingPlanners";
+import Collection from "./pages/CollectionBusinesses";
 import Cart from "./pages/Cart";
 import CartPage from "./pages/user/CartPage";
 import DetailsCompany from "./pages/CompanyDetails";
@@ -55,7 +55,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<OurServices />} />
         <Route path="/category/:categoryName" element={<AllCategories />} />
-        <Route path="/planners" element={<WiddingPlanners />} />
+        <Route path="/collection" element={<Collection />} />
         <Route path="/cart" element={<Cart />} />
 
         <Route path="page01" element={<CategoriesBusinesses />} />
