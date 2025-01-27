@@ -21,6 +21,7 @@ const BusinessDish = ({ dish }: Props) => {
           <h1 className="text-2xl flex justify-between">
             <span className="font-bold">{dish.name}</span>
             <span>{" $" + dish.price}</span>
+            
           </h1>
           <p className="line-clamp-2">{dish.description}</p>
         </div>

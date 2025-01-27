@@ -19,7 +19,7 @@ const Navbar = ({ simpleLogo }: Props) => {
             HOME
           </Link>
           <span className="text-gray-500">|</span>
-          <Link to="/services" className="text-gray-700 hover:text-gray-900">
+          <Link to="/page01" className="text-gray-700 hover:text-gray-900">
             OUR SERVICES
           </Link>
         </div>
