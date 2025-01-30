@@ -52,7 +52,7 @@ const CompanyDetails = () => {
 
   return (
     <div>
-      <Navbar simpleLogo={true} />
+      <Navbar />
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg min-h-screen flex space-x-6">
         {/* Left Section: Image, Name, and Rating */}
         <div className="flex flex-col items-center text-center w-1/3 bg-gray-50 p-4 rounded-lg shadow-md">

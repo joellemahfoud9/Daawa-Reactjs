@@ -32,6 +32,8 @@ import AdminBusinessDishes from "./pages/admin/AdminBusinessDishes";
 import AdminStats from "./pages/admin/AdminStats";
 import AdminBusinessAttributes from "./pages/admin/AdminBusinessAttributes";
 import OrderDetailsCartPage from "./pages/user/OrderDetailsCartPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -63,6 +65,8 @@ function App() {
         <Route path="page02/:id" element={<CategoryBusinesses />} />
         <Route path="page04" element={<OrderDetailsCartPage />} />
         <Route path="page03" element={<CartPage />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
       <Route
         path="/category/:categoryName/:companyId"
