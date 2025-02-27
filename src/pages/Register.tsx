@@ -1,10 +1,39 @@
 import { useEffect, useState } from "react";
 import usePostData from "../hooks/usePostData";
 import { useCookies } from "react-cookie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [cookies, setCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    role: "USER", 
+  });
+
+  const { postData, isLoading, error, data } = usePostData({
+    endpoint: `register`,
+    body: formData,
+  });
+
+  useEffect(() => {
+    if (data && data.token) {
+      setCookie("token", data.token, { path: "/home" });
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        phone: "",
+        role: "USER",
+      });
+      console.log("Registration successful! Token stored in cookies.");
+      navigate(formData.role === "ADMIN" ? "/admin" : "/home");
+    }
+  }, [data, setCookie, navigate, formData.role]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -16,32 +45,12 @@ const Register = () => {
     }));
   };
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-    role: "USER",
-  });
-
-  const { postData, isLoading, error, data } = usePostData({
-    endpoint: `register`,
-    body: formData,
-  });
-
-  useEffect(() => {
-    if (data && data.token) {
-      setCookie("token", data.token, { path: "/" });
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        phone: "",
-        role: "USER",
-      });
-      console.log("Registration successful! Token stored in cookies.");
-    }
-  }, [data, setCookie]);
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      role: e.target.checked ? "ADMIN" : "USER", 
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,7 +76,7 @@ const Register = () => {
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
             <input
               className="border text-lg p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="name"
+              type="text"
               placeholder="Name"
               name="name"
               value={formData.name}
@@ -94,13 +103,23 @@ const Register = () => {
             />
             <input
               className="border text-lg p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="phone"
+              type="tel"
               placeholder="Phone"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
               required
             />
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="adminCheck"
+                className="mr-2"
+                checked={formData.role === "ADMIN"}
+                onChange={handleCheckboxChange}
+              />
+              <label htmlFor="adminCheck">Register as Admin</label>
+            </div>
             <button
               type="submit"
               className="bg-blue-500 text-white text-lg p-3 rounded w-full hover:bg-blue-600 transition-colors"
@@ -109,9 +128,9 @@ const Register = () => {
               {isLoading ? "Loading..." : "Register"}
             </button>
             <span className="self-center">
-              already have an account?{" "}
+              Already have an account?{" "}
               <Link className="text-blue-600" to={"/login"}>
-                login
+                Login
               </Link>
             </span>
             {error && <p className="text-red-500">{error}</p>}

@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
 import usePostData from "../hooks/usePostData";
 import { useCookies } from "react-cookie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["token"]);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const navigate = useNavigate(); 
 
   const [formData, setFormData] = useState({
     email: "",
@@ -28,21 +19,31 @@ const Login = () => {
 
   useEffect(() => {
     if (data && data.token) {
-      setCookie("token", data.token, { path: "/" });
-      setFormData({
-        email: "",
-        password: "",
-      });
-      console.log("Registration successful! Token stored in cookies.");
+      setCookie("token", data.token, { path: "/home" });
+      console.log("Login successful! Token stored in cookies.");
+
+      if (data.role === "ADMIN") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
     }
-  }, [data, setCookie]);
+  }, [data, setCookie, navigate]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await postData();
     } catch (err) {
-      console.log("Registration failed:", err);
+      console.log("Login failed:", err);
     }
   };
 
@@ -85,9 +86,9 @@ const Login = () => {
               {isLoading ? "Logging in..." : "Login"}
             </button>
             <span className="self-center">
-              don't have an account?{" "}
+              Don't have an account?{" "}
               <Link className="text-blue-600" to={"/register"}>
-                register
+                Register
               </Link>
             </span>
             {error && <p className="text-red-500">{error}</p>}
@@ -99,3 +100,4 @@ const Login = () => {
 };
 
 export default Login;
+
