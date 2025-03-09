@@ -10,11 +10,13 @@ import { toast, ToastContainer } from "react-toastify";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import useDeleteData from "../../hooks/useDeleteData";
 import useGetData from "../../hooks/useGetData";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessDishes = () => {
   const { id } = useParams();
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { data: dishes } = useGetData<{ data: Dish[] }>(
-    `businesses/${id}/dishes`
+    `businesses/${id}/dishes` ,token
   );
 
   const [formData, setFormData] = useState({

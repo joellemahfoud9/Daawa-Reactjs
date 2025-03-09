@@ -10,11 +10,13 @@ import { Attribute } from "../../models/Business";
 import useDeleteData from "../../hooks/useDeleteData";
 import { FaTimesCircle } from "react-icons/fa";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessAttributes = () => {
   const { id } = useParams();
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { data: attributes } = useGetData<{ data: Attribute[] }>(
-    `businesses/${id}/attributes`
+    `businesses/${id}/attributes` ,token
   );
 
   const options = [

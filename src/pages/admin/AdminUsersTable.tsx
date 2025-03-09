@@ -10,15 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import Pagination from "../../components/Admin/Pagination";
 import AddFAB from "../../components/Admin/AddFAB";
-
+import { useCookies } from "react-cookie";
 const AdminUsersTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const { isLoading, error, data } = useGetData<{
     total: number;
     pageSize: number;
     data: User[];
-  }>(`users?page=${currentPage}`);
+  }>(`users?page=${currentPage}`,token);
 
   /* DELETE MODAL LOGIC */
   const {

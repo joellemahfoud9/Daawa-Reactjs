@@ -7,7 +7,7 @@ import useGetData from "../../hooks/useGetData";
 import { Category } from "../../models/Business";
 import DropDownMenu from "../../components/Admin/DropDownMenu";
 import { FaTimesCircle } from "react-icons/fa";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessesNew = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -18,6 +18,8 @@ const AdminBusinessesNew = () => {
     category: "",
   });
   const [image, setImage] = useState<File | null>(null);
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -44,7 +46,7 @@ const AdminBusinessesNew = () => {
     isLoading,
     error,
     data: categories,
-  } = useGetData<{ data: Category[] }>("categories");
+  } = useGetData<{ data: Category[] }>("categories",token);
 
   useEffect(() => {
     if (dataPost) {

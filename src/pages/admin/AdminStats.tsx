@@ -3,10 +3,12 @@ import StatsCard from "../../components/Admin/StatsCard";
 import useGetData from "../../hooks/useGetData";
 import { Statistics } from "../../models/Statistics";
 import { MdCollectionsBookmark, MdFastfood } from "react-icons/md";
-
+import { useCookies } from "react-cookie";
 const AdminStats = () => {
+  const [cookie] = useCookies(["token"]);
+       const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Statistics }>(
-    "statistics"
+    "statistics" ,token
   );
 
   const stats = [

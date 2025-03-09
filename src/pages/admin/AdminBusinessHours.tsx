@@ -10,11 +10,13 @@ import { FaTimesCircle } from "react-icons/fa";
 import useDeleteData from "../../hooks/useDeleteData";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import useGetData from "../../hooks/useGetData";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessHours = () => {
   const { id } = useParams();
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { data: hours } = useGetData<{ data: Hour[] }>(
-    `businesses/${id}/hours`
+    `businesses/${id}/hours`,token
   );
 
   const [formData, setFormData] = useState({

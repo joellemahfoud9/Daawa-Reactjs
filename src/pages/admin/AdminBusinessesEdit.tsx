@@ -11,7 +11,7 @@ import useGetData from "../../hooks/useGetData"; // Assuming this hook is alread
 import { Link, useLocation } from "react-router-dom";
 import DropDownMenu from "../../components/Admin/DropDownMenu";
 import { Category } from "../../models/Business";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessesEdit = () => {
   const { state } = useLocation();
 
@@ -38,13 +38,15 @@ const AdminBusinessesEdit = () => {
 
   const [image, setImage] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
 
   // Fetch categories
   const {
     isLoading: isCategoriesLoading,
     error: categoriesError,
     data: categories,
-  } = useGetData<{ data: Category[] }>("categories");
+  } = useGetData<{ data: Category[] }>("categories",token);
 
   const formDataWithImg = new FormData();
 

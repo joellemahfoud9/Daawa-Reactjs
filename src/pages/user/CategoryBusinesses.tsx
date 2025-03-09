@@ -4,16 +4,19 @@ import { Category } from "../../models/Business";
 import BusinessDetailsCard from "../../components/Business/BusinessDetailsCard";
 import Pagination from "../../components/Admin/Pagination";
 import { useState } from "react";
+import {useCookies} from "react-cookie";
 
 const CategoryBusinesses = () => {
   const { id } = useParams();
   const { state } = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const { isLoading, error, data } = useGetData<{
     data: Category;
     totalBusinessesInCategory: number;
     pageSize: number;
-  }>(`categories/${id}?page=${currentPage}`);
+  }>(`categories/${id}?page=${currentPage}`,token);
   return (
     <>
       <Pagination

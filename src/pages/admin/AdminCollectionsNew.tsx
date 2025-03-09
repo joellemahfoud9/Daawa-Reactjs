@@ -7,9 +7,11 @@ import SubmitFAB from "../../components/Admin/SubmitFAB";
 import usePostData from "../../hooks/usePostData";
 import { toast, ToastContainer } from "react-toastify";
 import LabeledTextInput from "../../components/Admin/LabeledTextInput";
-
+import { useCookies } from "react-cookie";
 const AdminCollectionsNew = () => {
   const [currPage, setCurrPage] = useState(1);
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
 
   const {
     isLoading,
@@ -21,7 +23,7 @@ const AdminCollectionsNew = () => {
     pageSize: number;
     total: number;
     totalPages: number;
-  }>(`businesses?page=${currPage}`);
+  }>(`businesses?page=${currPage}`,token);
 
   const [selectedBusinesses, setSelectedBusinesses] = useState<string[]>([]);
 

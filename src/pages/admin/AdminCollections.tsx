@@ -8,13 +8,15 @@ import { toast, ToastContainer } from "react-toastify";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import { FaPen, FaTrash } from "react-icons/fa";
-
+import { useCookies } from "react-cookie";
 const AdminCollections = () => {
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { isLoading, error, data } = useGetData<{
     total: number;
     pageSize: number;
     data: Collection[];
-  }>(`collections`);
+  }>(`collections`,token);
 
   /* DELETE MODAL LOGIC */
   const {

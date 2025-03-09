@@ -8,11 +8,13 @@ import { MdRemoveShoppingCart } from "react-icons/md";
 import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import BusinessDish from "../../components/Business/BusinessDish";
-
+import { useCookies } from "react-cookie";
 const BusinessDetails = () => {
   const { id } = useParams();
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Business }>(
-    `businesses/${id}`
+    `businesses/${id}`,token
   );
   const [cartItems, setCartItems] = useAtom(cartItemsAtom);
   useEffect(() => {

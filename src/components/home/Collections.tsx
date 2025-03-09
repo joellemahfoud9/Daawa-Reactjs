@@ -1,12 +1,14 @@
 import useGetData from "../../hooks/useGetData";
 import { Collection } from "../../models/Collection";
-
+import { useCookies } from "react-cookie";
 const Collections = () => {
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { isLoading, error, data } = useGetData<{
     total: number;
     pageSize: number;
     data: Collection[];
-  }>(`collections`);
+  }>(`collections`,token);
 
   return (
     <div className="flex flex-col items-center py-12 bg-white">

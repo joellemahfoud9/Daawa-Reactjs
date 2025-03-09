@@ -1,16 +1,24 @@
 import { useState } from "react";
 import useGetData from "../../hooks/useGetData";
 import { Business } from "../../models/Business";
+import {useCookies} from "react-cookie";
 
 
 const Services = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [cookie] = useCookies(["token"]);
+   const token = cookie.token;
 
+   if(!token){
+    console.log("token is missing");
+    window.location.href ="/login";
+   }
+   
   const { isLoading, error, data } = useGetData<{
     total: number;
     pageSize: number;
     data: Business[];
-  }>(`businesses?page=${currentPage}`);
+  }>(`businesses?page=${currentPage}`,token);
 
   return (
     <div className="flex flex-col items-center bg-white w-full">

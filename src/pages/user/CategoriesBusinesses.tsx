@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import BusinessCard from "../../components/Admin/BusinessCard";
 import useGetData from "../../hooks/useGetData";
 import { Category } from "../../models/Business";
-
+import { useCookies } from "react-cookie";
 
 const CategoriesBusinesses = () => {
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Category[] }>(
-    "categories/businesses"
+    "categories/businesses" , token
   );
   return (
     <main className="p-page">

@@ -10,10 +10,12 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
-
+import { useCookies } from "react-cookie";
 const AdminCategories = () => {
+    const [cookie] = useCookies(["token"]);
+     const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Category[] }>(
-    "categories"
+    "categories",token
   );
 
   /* DELETE MODAL LOGIC */

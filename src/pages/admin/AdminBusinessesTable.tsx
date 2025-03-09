@@ -10,15 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import AddFAB from "../../components/Admin/AddFAB";
-
+import { useCookies } from "react-cookie";
 const AdminBusinessesTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [cookie] = useCookies(["token"]);
+   const token = cookie.token;
   const { isLoading, error, data } = useGetData<{
     total: number;
     pageSize: number;
     data: Business[];
-  }>(`businesses?page=${currentPage}`);
+  }>(`businesses?page=${currentPage}`,token);
 
   /* DELETE MODAL LOGIC */
   const {
@@ -113,7 +114,7 @@ const AdminBusinessesTable = () => {
   // };
 
   // useEffect(() => {
-  //   getBusinesses();
+  //   getBusinesses();s
   // }, []);
 
   return (
