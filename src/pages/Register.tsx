@@ -1,4 +1,4 @@
-
+  
 import { useEffect, useState } from "react";
 import usePostData from "../hooks/usePostData";
 import { useCookies } from "react-cookie";
@@ -7,18 +7,18 @@ import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const [cookies, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     phone: "",
+    role: "USER", 
   });
 
   const { postData, isLoading, error, data } = usePostData({
     endpoint: `register`,
-    body: { ...formData, role: isAdmin ? "ADMIN" : "USER" },
+      body:formData,
   });
 
   useEffect(() => {
@@ -29,11 +29,12 @@ const Register = () => {
         email: "",
         password: "",
         phone: "",
+        role: "USER",
       });
       console.log("Registration successful! Token stored in cookies.");
-      navigate(isAdmin ? "/admin" : "/");
+      navigate(formData.role === "ADMIN" ? "/admin" : "/");
     }
-  }, [data, setCookie, isAdmin]);
+  }, [data, setCookie, navigate, formData.role]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -45,26 +46,22 @@ const Register = () => {
     }));
   };
 
+  const handleCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement >
+  ) => {
+    setFormData((prevData) => ({
+      ...prevData,
+    role: e.target.checked ? "ADMIN" :"USER",
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
-    const updatedFormData = {
-      ...formData,
-      role: isAdmin ? "ADMIN" : "USER",
-    };
-  
-    console.log("Updated Form Data:", updatedFormData); 
-  
     try {
       await postData();
     } catch (err) {
       console.log("Registration failed:", err);
     }
-  };
-  
-
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsAdmin(e.target.checked);
   };
 
   return (
@@ -109,7 +106,7 @@ const Register = () => {
             />
             <input
               className="border text-lg p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="phone"
+              type="tel"
               placeholder="Phone"
               name="phone"
               value={formData.phone}
@@ -121,7 +118,7 @@ const Register = () => {
                 type="checkbox"
                 id="adminCheck"
                 className="mr-2"
-                checked={isAdmin}
+                checked={formData.role === "ADMIN"}
                 onChange={handleCheckboxChange}
               />
               <label htmlFor="adminCheck">Register as Admin</label>
@@ -134,9 +131,9 @@ const Register = () => {
               {isLoading ? "Loading..." : "Register"}
             </button>
             <span className="self-center">
-              already have an account? {" "}
+              Already have an account?{" "}
               <Link className="text-blue-600" to={"/login"}>
-                login
+                Login
               </Link>
             </span>
             {error && <p className="text-red-500">{error}</p>}
@@ -148,4 +145,3 @@ const Register = () => {
 };
 
 export default Register;
-  
