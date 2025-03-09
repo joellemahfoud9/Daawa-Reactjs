@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex px-10">
         {/* Left side */}
         <div className="w-1/2 flex items-center justify-start space-x-4 text-2xl">
-          <Link to="/home" className="text-gray-700 hover:text-gray-900">
+          <Link to="/" className="text-gray-700 hover:text-gray-900">
             HOME
           </Link>
           <span className="text-gray-500">|</span>

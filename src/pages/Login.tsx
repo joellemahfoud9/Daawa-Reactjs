@@ -18,17 +18,24 @@ const Login = () => {
   });
 
   useEffect(() => {
+    console.log("data:", data); 
+    
     if (data && data.token) {
-      setCookie("token", data.token, { path: "/home" });
-      console.log("Login successful! Token stored in cookies.");
+        setCookie("token", data.token, { path: "/" });
+        
+        if (data.role) {
+            navigate(data.role === "ADMIN" ? "/admin" : "/");
+        } else {
+            console.error("Role is missing in login response.");
+        }
 
-      if (data.role === "ADMIN") {
-        navigate("/admin");
-      } else {
-        navigate("/home");
-      }
+        setFormData({
+            email: "",
+            password: "",
+        });
     }
-  }, [data, setCookie, navigate]);
+}, [data, setCookie, navigate]);
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

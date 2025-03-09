@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import OurServices from "./pages/OurServices";
 import AllCategories from "./pages/AllCategories";
@@ -54,8 +54,7 @@ function App() {
   return (
     <Routes>
       <Route element={<UserLayout />}>
-        <Route path="/" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/services" element={<OurServices />} />
         <Route path="/category/:categoryName" element={<AllCategories />} />
         <Route path="/collection" element={<Collection />} />
@@ -66,8 +65,9 @@ function App() {
         <Route path="page02/:id" element={<CategoryBusinesses />} />
         <Route path="page04" element={<OrderDetailsCartPage />} />
         <Route path="page03" element={<CartPage />} />
-        {/* <Route path="login" element={<Login />} /> */}
+        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        
       </Route>
       <Route
         path="/category/:categoryName/:companyId"
