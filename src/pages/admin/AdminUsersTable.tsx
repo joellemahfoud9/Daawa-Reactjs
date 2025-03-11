@@ -11,6 +11,7 @@ import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import Pagination from "../../components/Admin/Pagination";
 import AddFAB from "../../components/Admin/AddFAB";
 import { useCookies } from "react-cookie";
+
 const AdminUsersTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [cookie] = useCookies(["token"]);
@@ -40,7 +41,7 @@ const AdminUsersTable = () => {
   };
   const handleConfirmDelete = async () => {
     try {
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setIsDeleteModalOpen(false);
       setItemToDelete(null);
     } catch (error) {
@@ -82,7 +83,7 @@ const AdminUsersTable = () => {
     useState(false);
   const handleConfirmDeleteMultiple = async () => {
     try {
-      await deleteMultiple({ userIds: selectedUserIds });
+      await deleteMultiple({ userIds: selectedUserIds },token);
       setIsDeleteMultipleModalOpen(false);
       setSelectedUserIds([]);
     } catch (error) {

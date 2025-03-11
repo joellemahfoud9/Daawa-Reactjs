@@ -40,7 +40,7 @@ const AdminBusinessesTable = () => {
   };
   const handleConfirmDelete = async () => {
     try {
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setIsDeleteModalOpen(false);
       setItemToDelete(null);
     } catch (error) {
@@ -82,7 +82,7 @@ const AdminBusinessesTable = () => {
     useState(false);
   const handleConfirmDeleteMultiple = async () => {
     try {
-      await deleteMultiple({ userIds: selectedUserIds });
+      await deleteMultiple({ userIds: selectedUserIds },token);
       setIsDeleteMultipleModalOpen(false);
       setSelectedUserIds([]);
     } catch (error) {

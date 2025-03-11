@@ -52,6 +52,7 @@ const AdminBusinessDishes = () => {
   const { postData, isLoading, error, data } = usePostData({
     endpoint: "dishes",
     body: formDataWithImage,
+    token,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -107,7 +108,7 @@ const AdminBusinessDishes = () => {
   const handleConfirmDelete = async () => {
     try {
       setIsDeleteModalOpen(false);
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setItemToDelete(null);
     } catch (error) {
       setIsDeleteModalOpen(false);

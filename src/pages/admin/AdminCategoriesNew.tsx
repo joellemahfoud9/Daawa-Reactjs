@@ -3,8 +3,11 @@ import usePostData from "../../hooks/usePostData";
 import { toast, ToastContainer } from "react-toastify";
 import LabeledTextInput from "../../components/Admin/LabeledTextInput";
 import SubmitFAB from "../../components/Admin/SubmitFAB";
+import { useCookies } from "react-cookie";
 
 const AdminCategoriesNew = () => {
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -22,6 +25,7 @@ const AdminCategoriesNew = () => {
   const { postData, isLoading, error, data } = usePostData({
     endpoint: "categories",
     body: formData,
+    token,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {

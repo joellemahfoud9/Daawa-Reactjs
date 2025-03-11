@@ -9,6 +9,7 @@ import { FaCartPlus } from "react-icons/fa";
 import { useEffect } from "react";
 import BusinessDish from "../../components/Business/BusinessDish";
 import { useCookies } from "react-cookie";
+
 const BusinessDetails = () => {
   const { id } = useParams();
     const [cookie] = useCookies(["token"]);

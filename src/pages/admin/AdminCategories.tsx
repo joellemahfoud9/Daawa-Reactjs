@@ -11,6 +11,7 @@ import { toast, ToastContainer } from "react-toastify";
 import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import { useCookies } from "react-cookie";
+
 const AdminCategories = () => {
     const [cookie] = useCookies(["token"]);
      const token = cookie.token;
@@ -37,7 +38,7 @@ const AdminCategories = () => {
   };
   const handleConfirmDelete = async () => {
     try {
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setIsDeleteModalOpen(false);
       setItemToDelete(null);
     } catch (error) {
@@ -79,7 +80,7 @@ const AdminCategories = () => {
     useState(false);
   const handleConfirmDeleteMultiple = async () => {
     try {
-      await deleteMultiple({ userIds: selectedCategoriesIds });
+      await deleteMultiple({ userIds: selectedCategoriesIds },token);
       setIsDeleteMultipleModalOpen(false);
       setSelectedUserIds([]);
     } catch (error) {

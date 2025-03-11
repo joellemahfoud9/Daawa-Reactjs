@@ -66,6 +66,7 @@ const AdminCollectionsNew = () => {
   } = usePostData({
     endpoint: "collections",
     body: formData,
+    token,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {

@@ -53,6 +53,7 @@ const AdminBusinessesEdit = () => {
   const { patchData, isLoading, error, data } = usePatchData({
     endpoint: `businesses/${state.id}`,
     body: formDataWithImg,
+    token,
   });
 
   useEffect(() => {

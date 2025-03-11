@@ -36,7 +36,7 @@ const ShoppingCart = () => {
     <div>
       <div className=" min-h-screen flex justify-center items-center">
         <div className="w-full max-w-2xl p-6 bg-white shadow-lg">
-          <h1 className="text-2xl font-semibold mb-6 text-center">
+          <h1 className="text-2xl text-gray-600 font-semibold mb-6 text-center">
             Shopping Cart
           </h1>
 

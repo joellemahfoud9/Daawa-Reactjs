@@ -5,8 +5,11 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SubmitFAB from "../../components/Admin/SubmitFAB";
 import DropDownMenu from "../../components/Admin/DropDownMenu";
+import { useCookies } from "react-cookie";
 
 const AdminUsersNew = () => {
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,6 +31,7 @@ const AdminUsersNew = () => {
   const { postData, isLoading, error, data } = usePostData({
     endpoint: "users",
     body: formData,
+    token,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {

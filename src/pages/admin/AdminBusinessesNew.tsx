@@ -40,6 +40,7 @@ const AdminBusinessesNew = () => {
   } = usePostData({
     endpoint: "businesses",
     body: formDataWithImage,
+    token,
   });
 
   const {

@@ -21,7 +21,7 @@ const Services = () => {
   }>(`businesses?page=${currentPage}`,token);
 
   return (
-    <div className="flex flex-col items-center bg-white w-full">
+    <div className="flex flex-col items-center w-full">
       <div className="w-full max-w-7xl mb-5 px-4">
         <div className="flex flex-col items-start max-sm:items-center">
           <img

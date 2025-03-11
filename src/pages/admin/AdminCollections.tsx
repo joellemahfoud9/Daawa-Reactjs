@@ -37,7 +37,7 @@ const AdminCollections = () => {
   };
   const handleConfirmDelete = async () => {
     try {
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setIsDeleteModalOpen(false);
       setItemToDelete(null);
     } catch (error) {
@@ -81,7 +81,7 @@ const AdminCollections = () => {
     useState(false);
   const handleConfirmDeleteMultiple = async () => {
     try {
-      await deleteMultiple({ collectionsIds: selectedCollectionsIds });
+      await deleteMultiple({ collectionsIds: selectedCollectionsIds },token);
       setIsDeleteMultipleModalOpen(false);
       setSelectedCollectionsIds([]);
     } catch (error) {

@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import usePatchdata from "../../hooks/usePatchData";
+import { useCookies } from "react-cookie";
 
 const AdminUsersEdit = () => {
   //   const { id } = useParams();
   const { state } = useLocation();
   const attributes = ["id", "name", "email", "phone", "role"];
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const [formData, setFormData] = useState({
     id: state.id || "",
     name: state.name || "",
@@ -27,6 +30,7 @@ const AdminUsersEdit = () => {
   const { patchData, isLoading, error, data } = usePatchdata({
     endpoint: `users/${state.id}`,
     body: formData,
+    token,
   });
 
   useEffect(() => {

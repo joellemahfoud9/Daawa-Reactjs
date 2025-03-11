@@ -1,6 +1,6 @@
 const Testimonial = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center mt-10 pt-12 bg-gray-100 w-full">
+    <div className="flex flex-col md:flex-row items-center justify-center mt-10 pt-12  w-full">
       {/* Left Section  */}
       <div
         className="relative w-full md:w-1/2 h-96 bg-cover bg-center"

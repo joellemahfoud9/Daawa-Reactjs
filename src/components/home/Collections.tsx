@@ -11,7 +11,7 @@ const Collections = () => {
   }>(`collections`,token);
 
   return (
-    <div className="flex flex-col items-center py-12 bg-white">
+    <div className="flex flex-col items-center py-12 ">
     
     {isLoading ?(
           <span>Loading...</span>

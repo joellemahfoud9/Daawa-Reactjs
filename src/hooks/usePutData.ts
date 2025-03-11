@@ -4,6 +4,7 @@ import { API_URL } from "../constant/constants";
 interface Props {
   endpoint: string;
   body: object;
+  token?:string;
 }
 
 interface Response {
@@ -13,7 +14,7 @@ interface Response {
   putData: () => Promise<void>;
 }
 
-const usePutData = ({ endpoint, body }: Props): Response => {
+const usePutData = ({ endpoint, body , token }: Props): Response => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<any | null>(null);
@@ -27,6 +28,7 @@ const usePutData = ({ endpoint, body }: Props): Response => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(body),
       });

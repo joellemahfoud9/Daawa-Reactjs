@@ -35,3 +35,47 @@
 .hide-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
+body.dark-mode {
+  background-color: #1c1c1c;
+  color: #ffffff;
+}
+
+.sidebar {
+  background-color: #f5f5f5; 
+  color: #333333; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+body.dark-mode .sidebar {
+  background-color: #2c2c2c; 
+  color: #ffffff; 
+}
+
+
+.sidebar-link {
+  color: #000000;
+}
+
+body.dark-mode .sidebar-link {
+  color: #f0f2f3; 
+}
+
+
+.sidebar-close-btn {
+  color: #333333;
+}
+
+body.dark-mode .sidebar-close-btn {
+  color: #ffffff;
+}
+
+
+.sidebar-divider {
+  border-top: 1px solid #d1d1d1;
+}
+
+body.dark-mode .sidebar-divider {
+  border-top: 1px solid #4a4a4a; 
+}

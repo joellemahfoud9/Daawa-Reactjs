@@ -39,6 +39,7 @@ const AdminBusinessHours = () => {
   const { postData, isLoading, error, data } = usePostData({
     endpoint: "hours",
     body: formData,
+    token,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -81,7 +82,7 @@ const AdminBusinessHours = () => {
   const handleConfirmDelete = async () => {
     try {
       setIsDeleteModalOpen(false);
-      await deleteData(itemToDelete!.id);
+      await deleteData(itemToDelete!.id,token);
       setItemToDelete(null);
     } catch (error) {
       setIsDeleteModalOpen(false);

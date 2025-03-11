@@ -3,9 +3,12 @@ import { useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import usePatchdata from "../../hooks/usePatchData";
 import SubmitFAB from "../../components/Admin/SubmitFAB";
+import { useCookies } from "react-cookie";
 
 const AdminUsersEditPassword = () => {
   const { state } = useLocation();
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   // const attributes = ["id", "name", "email", "phone", "role"];
   const attributes = ["id"];
   const [formData, setFormData] = useState({
@@ -23,6 +26,7 @@ const AdminUsersEditPassword = () => {
   const { patchData, isLoading, error, data } = usePatchdata({
     endpoint: `users/${state.id}`,
     body: formData,
+    token
   });
   useEffect(() => {
     if (data) {
