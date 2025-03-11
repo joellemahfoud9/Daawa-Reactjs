@@ -6,7 +6,7 @@ import Collection from "./pages/CollectionBusinesses";
 import Cart from "./pages/Cart";
 import CartPage from "./pages/user/CartPage";
 import DetailsCompany from "./pages/CompanyDetails";
-import WeddingPlannerCard from "./components/Planners/WeddingPlannerCard";
+// import WeddingPlannerCard from "./components/Planners/WeddingPlannerCard";
 import UserLayout from "./layouts/UserLayout";
 import AdminUsersTable from "./pages/admin/AdminUsersTable";
 import AdminUsersNew from "./pages/admin/AdminUsersNew";
@@ -74,7 +74,7 @@ function App() {
         path="/category/:categoryName/:companyId"
         element={<DetailsCompany />}
       />
-      <Route path="/planner/:id" element={<WeddingPlannerCard />} />
+      {/* <Route path="/planner/:id" element={<WeddingPlannerCard />} /> */}
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="users" element={<AdminUsersTable />} />

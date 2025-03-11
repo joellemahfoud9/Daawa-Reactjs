@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { cartData } from "../../constant/index";
+// import { cartData } from "../../constant/index";
 import { CartItem } from "../../models - temp/Cart";
 import { useAtom } from "jotai";
 import { cartItemsAtom } from "../../atoms";
