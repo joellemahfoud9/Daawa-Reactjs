@@ -34,6 +34,7 @@ import AdminBusinessAttributes from "./pages/admin/AdminBusinessAttributes";
 import OrderDetailsCartPage from "./pages/user/OrderDetailsCartPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AdminCollectionsEdit from "./pages/admin/AdminCollectionEdit";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -94,6 +95,7 @@ function App() {
         <Route path="categories/:id" element={<AdminCategoryEdit />} />
         <Route path="collections" element={<AdminCollections />} />
         <Route path="collections/new" element={<AdminCollectionsNew />} />
+        <Route path="collections/:id" element={<AdminCollectionsEdit/>}/>
         <Route path="statistics" element={<AdminStats />} />
       </Route>
     </Routes>

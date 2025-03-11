@@ -5,7 +5,6 @@ import usePatchdata from "../../hooks/usePatchData";
 import { useCookies } from "react-cookie";
 
 const AdminUsersEdit = () => {
-  //   const { id } = useParams();
   const { state } = useLocation();
   const attributes = ["id", "name", "email", "phone", "role"];
   const [cookie] = useCookies(["token"]);

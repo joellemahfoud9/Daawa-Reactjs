@@ -71,9 +71,11 @@ const AdminCollectionsNew = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Submitting data:", formData);
     await postData();
   };
 
+ 
   useEffect(() => {
     if (dataPost) {
       toast.success("Collection added successfully!");
