@@ -125,33 +125,7 @@ const BusinessDetails = () => {
                 {data.data.dishes.map((dish) => (
                   <BusinessDish dish={dish} />
                 ))}
-                {/* <table>
-                  <thead>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                  </thead>
-                  <tbody>
-                    {data.data.dishes.map((dish) => (
-                      <tr key={dish.id}>
-                        <td className="px-2">
-                          <div className="w-20 h-20 rounded-full overflow-hidden">
-                            <img
-                              className="w-full h-full object-cover p-1"
-                              src={dish.image}
-                            />
-                          </div>
-                        </td>
-                        <td className="px-2">{dish.name}</td>
-                        <td className="px-2">{dish.description}</td>
-                        <td className="px-2">{dish.type}</td>
-                        <td className="px-2">{`$${dish.price}`}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table> */}
+                
               </div>
             </section>
           </>

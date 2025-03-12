@@ -161,9 +161,12 @@ const Navbar = () => {
     </button>
 
     <ul className="space-y-4 mt-10">
+     
       <li className="flex items-center space-x-2 sidebar-link cursor-pointer">
-        <FaLock /> <span>Change Password</span>
+    
       </li>
+      
+    
 
       <li className="flex items-center space-x-2 sidebar-link cursor-pointer">
         <FaGlobe /> <span>Change Language</span>
@@ -186,6 +189,7 @@ const Navbar = () => {
         )}
       </li>
 
+      <li className="sidebar-divider"></li>
       <li
         onClick={handleLogout}
         className="flex items-center space-x-2 text-red-600 hover:text-red-800 cursor-pointer"

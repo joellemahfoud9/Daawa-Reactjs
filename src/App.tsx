@@ -36,6 +36,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminCollectionsEdit from "./pages/admin/AdminCollectionEdit";
 import CollectionDetails from "./pages/user/CollectionDetails";
+import UserChangePassword from "./pages/user/UserChangePassword";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -55,6 +56,8 @@ function App() {
 
   return (
     <Routes>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
       <Route element={<UserLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<OurServices />} />
@@ -67,10 +70,7 @@ function App() {
         <Route path="page01/:id" element={<BusinessDetails />} />
         <Route path="page02/:id" element={<CategoryBusinesses />} />
         <Route path="page04" element={<OrderDetailsCartPage />} />
-        <Route path="page03" element={<CartPage />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        
+        <Route path="page03" element={<CartPage />} />  
       </Route>
       <Route
         path="/category/:categoryName/:companyId"
