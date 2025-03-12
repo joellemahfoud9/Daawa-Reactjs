@@ -11,7 +11,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import usePatchdata from "../../hooks/usePatchData";
+import usePutdata from "../../hooks/usePutData";
 import { useCookies } from "react-cookie";
 
 const AdminCategoriesEdit = () => {
@@ -34,7 +34,7 @@ const AdminCategoriesEdit = () => {
     }));
   };
 
-  const { patchData, isLoading, error, data } = usePatchdata({
+  const { putData, isLoading, error, data } = usePutdata({
     endpoint: `categories/${state.id}`,
     body: formData,
     token,
@@ -52,7 +52,7 @@ const AdminCategoriesEdit = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await patchData();
+      await putData();
     } catch (err) {
       console.log(err);
     }

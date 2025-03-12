@@ -35,6 +35,7 @@ import OrderDetailsCartPage from "./pages/user/OrderDetailsCartPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminCollectionsEdit from "./pages/admin/AdminCollectionEdit";
+import CollectionDetails from "./pages/user/CollectionDetails";
 
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
@@ -59,6 +60,7 @@ function App() {
         <Route path="/services" element={<OurServices />} />
         <Route path="/category/:categoryName" element={<AllCategories />} />
         <Route path="/collection" element={<Collection />} />
+        <Route path="/collection/:id" element={<CollectionDetails />} />
         <Route path="/cart" element={<Cart />} />
 
         <Route path="page01" element={<CategoriesBusinesses />} />

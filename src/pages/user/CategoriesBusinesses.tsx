@@ -6,17 +6,17 @@ import { useCookies } from "react-cookie";
 
 const CategoriesBusinesses = () => {
     const [cookie] = useCookies(["token"]);
-     const token = cookie.token;
+    const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Category[] }>(
     "categories/businesses" , token
   );
   return (
     <main className="p-page">
-       <input
+       {/* <input
           type="text"
           placeholder="Search for services or companies..."
           className="w-full md:w-1/3 my-8 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        /> */}
       {isLoading ? (
         <span>Loading...</span>
       ) : error ? (

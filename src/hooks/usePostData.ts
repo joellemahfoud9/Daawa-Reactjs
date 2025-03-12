@@ -59,3 +59,4 @@ const usePostData = ({ endpoint, body, token }: Props): Response => {
 };
 
 export default usePostData;
+

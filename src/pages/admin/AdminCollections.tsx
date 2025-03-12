@@ -9,6 +9,7 @@ import useDeleteMultiple from "../../hooks/useDeleteMultiple";
 import DeleteConfirmDialog from "../../components/Admin/DeleteConfirmDialog";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { useCookies } from "react-cookie";
+
 const AdminCollections = () => {
     const [cookie] = useCookies(["token"]);
      const token = cookie.token;

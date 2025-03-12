@@ -25,12 +25,10 @@ const Services = () => {
       <div className="w-full max-w-7xl mb-5 px-4">
         <div className="flex flex-col items-start max-sm:items-center">
           <img
-            src="src/assets/Logo/logo.jpg"
-            alt="Company Logo"
-            className="h-32 "
+            src="/daawa-text.png"
+            className="h-32 dark:invert "
           />
-
-          <h2 className="text-4xl font-bold text-gray-800 relative after:block after:absolute after:right-0 after:top-0 after:h-full after:w-1/3 max-sm:text-base">
+          <h2 className="text-4xl font-bold relative after:block after:absolute after:right-0 after:top-0 after:h-full after:w-1/3 max-sm:text-base">
             OUR SERVICES
           </h2>
         </div>

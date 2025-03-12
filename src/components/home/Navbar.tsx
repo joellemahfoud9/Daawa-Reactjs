@@ -117,11 +117,15 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-col items-center">
-          <img
-            src="/src/assets/Logo/logo.jpg"
-            alt="Company Logo"
-            className="h-24"
-          />
+          {isDarkMode ? (
+          <>
+            <img className="invert h-32 " src="/daawa-text.png" />
+          </>
+        ) : (
+          <>
+            <img className=" h-32 " src="/daawa-text.png" />
+          </>
+        )}
         </div>
 
         <div className="w-1/2 flex items-center justify-end space-x-4 text-2xl">
