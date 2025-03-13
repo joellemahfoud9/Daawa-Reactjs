@@ -7,7 +7,6 @@ import Testimonial from "../components/home/Testimonial";
 function Home() {
   return (
     <>
-  
       <Banner />
       <Services />
       <About />

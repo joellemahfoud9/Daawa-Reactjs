@@ -26,7 +26,7 @@ const Services = () => {
         <div className="flex flex-col items-start max-sm:items-center">
           <img
             src="/daawa-text.png"
-            className="h-32 dark:invert "
+            className="h-32 dark:invert-0 "
           />
           <h2 className="text-4xl font-bold relative after:block after:absolute after:right-0 after:top-0 after:h-full after:w-1/3 max-sm:text-base">
             OUR SERVICES
