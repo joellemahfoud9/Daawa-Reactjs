@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import usePostData from "../hooks/usePostData";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; 
 
 const Login = () => {
   const [cookies, setCookie] = useCookies(["token"]);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const [formData, setFormData] = useState({
     email: "",
@@ -13,29 +15,28 @@ const Login = () => {
   });
 
   const { postData, isLoading, error, data } = usePostData({
-    endpoint: `login`,
+    endpoint: "login",
     body: formData,
   });
 
   useEffect(() => {
-    console.log("data:", data); 
-    
+    console.log("data:", data);
+
     if (data && data.token) {
-        setCookie("token", data.token, { path: "/" });
-        
-        if (data.role) {
-            navigate(data.role === "ADMIN" ? "/admin" : "/");
-        } else {
-            console.error("Role is missing in login response.");
-        }
+      setCookie("token", data.token, { path: "/" });
+      if (data.role) {
+        login(data.role);
+        navigate(data.role === "ADMIN" ? "/admin" : "/");
+      } else {
+        console.error("Role is missing in login response.");
+      }
 
-        setFormData({
-            email: "",
-            password: "",
-        });
+      setFormData({
+        email: "",
+        password: "",
+      });
     }
-}, [data, setCookie, navigate]);
-
+  }, [data, setCookie, navigate, login]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -107,4 +108,3 @@ const Login = () => {
 };
 
 export default Login;
-

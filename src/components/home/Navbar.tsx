@@ -63,22 +63,28 @@ import { useState, useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { cartItemsAtom } from "../../atoms";
 import { useCookies } from "react-cookie";
+import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const cartItems = useAtomValue(cartItemsAtom);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const navigate = useNavigate();
-  const [cookies, setCookie, removeCookie] = useCookies(["authToken"]);
+  const {logout} = useAuth();
 
+  
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-  const handleLogout = () => {
-    removeCookie("authToken");
-    setIsSidebarOpen(false);
-    navigate("/login");
+  
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+ 
+    const handleLogout = () => {
+      removeCookie("token");
+      // removeCookie("role", { path: "/" });
+      setIsSidebarOpen(false);
+      navigate("/login");
   };
 
+  
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };

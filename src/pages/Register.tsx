@@ -1,29 +1,38 @@
-  
 import { useEffect, useState } from "react";
 import usePostData from "../hooks/usePostData";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext"; 
 
 const Register = () => {
   const [cookies, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     phone: "",
-    role: "USER", 
+    role: "USER",
   });
 
   const { postData, isLoading, error, data } = usePostData({
     endpoint: `register`,
-      body:formData,
+    body: formData,
   });
 
   useEffect(() => {
     if (data && data.token) {
       setCookie("token", data.token, { path: "/" });
+
+      if (data.role) {
+        login(data.role); 
+        navigate(data.role === "ADMIN" ? "/admin" : "/");
+      } else {
+        console.error("Role is missing in registration response.");
+      }
+
       setFormData({
         name: "",
         email: "",
@@ -31,10 +40,10 @@ const Register = () => {
         phone: "",
         role: "USER",
       });
+
       console.log("Registration successful! Token stored in cookies.");
-      navigate(formData.role === "ADMIN" ? "/admin" : "/");
     }
-  }, [data, setCookie, navigate, formData.role]);
+  }, [data, setCookie, navigate, login]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -46,12 +55,10 @@ const Register = () => {
     }));
   };
 
-  const handleCheckboxChange = (
-    e: React.ChangeEvent<HTMLInputElement >
-  ) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevData) => ({
       ...prevData,
-    role: e.target.checked ? "ADMIN" :"USER",
+      role: e.target.checked ? "ADMIN" : "USER",
     }));
   };
 
@@ -105,8 +112,7 @@ const Register = () => {
               required
             />
             <input
-              className="border text-lg p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-              type="tel"
+              className="border text-lg p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"type="tel"
               placeholder="Phone"
               name="phone"
               value={formData.phone}
