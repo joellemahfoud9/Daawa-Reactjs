@@ -12,15 +12,17 @@ import { useCookies } from "react-cookie";
 
 const BusinessDetails = () => {
   const { id } = useParams();
-    const [cookie] = useCookies(["token"]);
-     const token = cookie.token;
+  const [cookie] = useCookies(["token"]);
+  const token = cookie.token;
   const { isLoading, error, data } = useGetData<{ data: Business }>(
-    `businesses/${id}`,token
+    `businesses/${id}`, token
   );
   const [cartItems, setCartItems] = useAtom(cartItemsAtom);
+  
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems]);
+
   return (
     <>
       {data && (
@@ -44,45 +46,45 @@ const BusinessDetails = () => {
         </AddFAB>
       )}
 
-      <main className="p-page pb-36">
-        {/* <div>BusinessDetails {id}</div> */}
+      <main className="p-4 sm:p-8 pb-36">
         {isLoading ? (
           <span>Loading...</span>
         ) : error ? (
           <span>{error}</span>
         ) : data ? (
           <>
-            <section className="w-full flex gap-8">
-              <div className="flex gap-12 bg-gray-200 p-12 w-1/2 rounded-xl">
+            <section className="w-full flex flex-col gap-8 sm:flex-row sm:gap-12">
+              <div className="flex gap-12 bg-gray-200 p-8 sm:p-12 w-full sm:w-1/2 rounded-xl">
                 <img
-                  className="w-52 h-52 rounded object-cover"
+                  className="w-32 sm:w-52 h-32 sm:h-52 rounded object-cover"
                   src={data.data.image}
+                  alt={data.data.name}
                 />
                 <div className="flex flex-col justify-around text-nowrap">
-                  <span className="text-4xl font-bold">{data.data.name}</span>
-                  <span>
+                  <span className="text-2xl sm:text-4xl font-bold">{data.data.name}</span>
+                  <span className="text-sm sm:text-base">
                     <span className="text-gray-400">category:</span>
-                    {` ` + data.data.category.name}
+                    {` ${data.data.category.name}`}
                   </span>
-                  <span>
+                  <span className="text-sm sm:text-base">
                     <span className="text-gray-400">email:</span>
-                    {` ` + data.data.email}
+                    {` ${data.data.email}`}
                   </span>
-                  <span>
+                  <span className="text-sm sm:text-base">
                     <span className="text-gray-400">phone:</span>
-                    {` ` + data.data.phone}
+                    {` ${data.data.phone}`}
                   </span>
                 </div>
               </div>
 
-              <div className="w-1/2 flex flex-col gap-6">
+              <div className="w-full sm:w-1/2 flex flex-col gap-6">
                 <div>
-                  <h1 className="text-4xl font-bold">Description:</h1>
+                  <h1 className="text-2xl sm:text-4xl font-bold">Description:</h1>
                   <br />
                   {data.data.description}
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold">Address:</h1>
+                  <h1 className="text-2xl sm:text-4xl font-bold">Address:</h1>
                   <br />
                   {data.data.address}
                 </div>
@@ -91,9 +93,9 @@ const BusinessDetails = () => {
 
             <hr className="my-8" />
 
-            <section className="flex justify-between">
-              <div className="w-1/2">
-                <h1 className="text-4xl font-bold mb-4">Hours:</h1>
+            <section className="flex flex-col sm:flex-row justify-between">
+              <div className="w-full sm:w-1/2">
+                <h1 className="text-2xl sm:text-4xl font-bold mb-4">Hours:</h1>
                 <ul>
                   {data.data.hours
                     .sort((a, b) => {
@@ -120,12 +122,11 @@ const BusinessDetails = () => {
                     ))}
                 </ul>
               </div>
-              <div className="w-1/2">
-                <h1 className="text-4xl font-bold mb-4">Dishes:</h1>
+              <div className="w-full sm:w-1/2">
+                <h1 className="text-2xl sm:text-4xl font-bold mb-4">Dishes:</h1>
                 {data.data.dishes.map((dish) => (
-                  <BusinessDish dish={dish} />
+                  <BusinessDish dish={dish} key={dish.id} />
                 ))}
-                
               </div>
             </section>
           </>

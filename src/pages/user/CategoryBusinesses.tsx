@@ -4,7 +4,7 @@ import { Category } from "../../models/Business";
 import BusinessDetailsCard from "../../components/Business/BusinessDetailsCard";
 import Pagination from "../../components/Admin/Pagination";
 import { useState } from "react";
-import {useCookies} from "react-cookie";
+import { useCookies } from "react-cookie";
 
 const CategoryBusinesses = () => {
   const { id } = useParams();
@@ -16,7 +16,8 @@ const CategoryBusinesses = () => {
     data: Category;
     totalBusinessesInCategory: number;
     pageSize: number;
-  }>(`categories/${id}?page=${currentPage}`,token);
+  }>(`categories/${id}?page=${currentPage}`, token);
+
   return (
     <>
       <Pagination
@@ -26,14 +27,18 @@ const CategoryBusinesses = () => {
         setCurrentPage={setCurrentPage}
       />
 
-      <main className="p-page">
-        <h1 className="text-4xl font-bold">{data?.data.name || state.name}</h1>
+      <main className="p-4 sm:p-8">
+        <h1 className="text-3xl sm:text-4xl font-bold">{data?.data.name || state.name}</h1>
 
         <div className="my-8" />
 
-        <div className="flex flex-wrap gap-8 mb-24">
+        <div className="flex flex-wrap gap-8 justify-center mb-24">
           {data?.data.businesses.map((business) => (
-            <Link key={business.id} to={`/page01/${business.id}`}>
+            <Link
+              key={business.id}
+              to={`/page01/${business.id}`}
+              className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4"
+            >
               <BusinessDetailsCard business={business} />
             </Link>
           ))}

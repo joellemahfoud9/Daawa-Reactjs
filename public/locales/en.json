@@ -1,0 +1,39 @@
+{
+    "title": "Testimonials",
+    "subtitle": "FROM OUR CLIENTS",
+    "description": "We are always eager to hear your opinion and share your experience. Here you can find some of our affectionate customers' opinions.",
+
+    "quote": "\"I had no idea about all the things I had to do to get married / things I needed to think about. Rachel explained everything to me and guided me through the whole process with enthusiasm and patience. She was wonderful to work with! I couldn’t have been happier with her services and upbeat personality!\"",
+    
+    "clientName": "FREDIA & PABLO",
+    "clientDate": "April 15, 2023, USA",
+    "token_missing": "Token is missing",
+    "our_services": "Our Services",
+    "loading": "Loading...",
+    "home": "HOME",
+    "our_collection": "OUR COLLECTION",
+    "change_language": "Change Language",
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode",
+    "logout": "Logout",
+    "DESCRIPTION": "Description",
+    "ADDRESS": "Address",
+    "HOURS": "Hours",
+    "DISHES": "Dishes",
+    "CATEGORY": "Category",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+
+    "aboutSection": {
+      "title": "About Our Planning Process",
+      "consult": "Consult",
+      "consultDescription": "Write about your process here! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      
+      "planning": "Planning",
+      "planningDescription": "Write about your process here! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      
+      "weddingDay": "Wedding Day",
+      "weddingDayDescription": "Write about your process here! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+  }
+  
