@@ -8,7 +8,7 @@ const Testimonial = () => {
       {/* Left Section */}
       <div
         className="relative w-full md:w-1/2 h-96 bg-cover bg-center"
-        style={{ backgroundImage: "url(/public/Testimonial/1_R61828.jpg)" }}
+        style={{ backgroundImage: "url(/Testimonial/1_R61828.jpg)" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center px-8 text-white space-y-2">
           <h3 className="text-lg italic">{t('testimonials')}</h3>
@@ -23,7 +23,7 @@ const Testimonial = () => {
           <p className="text-gray-700 italic mb-4">{t('quote')}</p>
           <div className="flex items-center mt-4">
             <img
-              src="src/assets/Testimonial/1_R61828.jpg"
+              src="\Testimonial\1_R61828.jpg"
               alt="Client"
               className="w-10 h-10 rounded-full mr-3"
             />
