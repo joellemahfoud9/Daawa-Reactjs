@@ -346,7 +346,7 @@ const Navbar = () => {
 
       {/* Sidebar */}
       {isSidebarOpen && (
-        <div className="fixed top-0 right-0 w-64 h-full bg-white shadow-lg z-50 p-5">
+        <div className="fixed top-0 right-0 w-64 h-full sidebar shadow-lg z-50 p-5">
           <button 
             onClick={toggleSidebar} 
             className="absolute top-4 right-4 text-2xl text-primary hover:text-gray-900"
