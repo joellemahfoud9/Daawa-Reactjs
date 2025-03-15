@@ -240,7 +240,6 @@ import { FaGlobe, FaSignOutAlt, FaSun, FaMoon } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { cartItemsAtom } from "../../atoms";
-import { useCookies } from "react-cookie";
 import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from 'react-i18next';
 
@@ -248,7 +247,7 @@ const Navbar = () => {
   const { i18n } = useTranslation();
 
   const handleLanguageChange = () => {
-    const newLang = i18n.language === 'ar' ? 'en' : 'ar'; // Toggle between Arabic & English
+    const newLang = i18n.language === 'ar' ? 'en' : 'ar'; 
     i18n.changeLanguage(newLang);
   };
 
@@ -256,14 +255,12 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { logout } = useAuth();  
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
-  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
-
   const handleLogout = () => {
-    removeCookie("token");
+    logout();
     setIsSidebarOpen(false);
     navigate("/login");
   };
