@@ -53,16 +53,16 @@ const AdminSideBar = () => {
             </div>
           </Link>
         </div>
-      </div>
-
       {/* Logout Button */}
       <button
         onClick={handleLogout}
-        className="mt-auto flex items-center gap-4 text-xl text-red-500 hover:text-red-400 p-4"
+        className="mt-12 flex items-center gap-4 text-xl text-red-500 hover:text-red-400 p-4"
       >
         <MdLogout />
         <span>Logout</span>
       </button>
+      </div>
+
     </nav>
   );
 };
