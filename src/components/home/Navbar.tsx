@@ -241,15 +241,15 @@ import { useState, useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { cartItemsAtom } from "../../atoms";
 import { useAuth } from "../../context/AuthContext";
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
-  const { i18n } = useTranslation();
+  // const { i18n } = useTranslation();
 
-  const handleLanguageChange = () => {
-    const newLang = i18n.language === 'ar' ? 'en' : 'ar'; 
-    i18n.changeLanguage(newLang);
-  };
+  // const handleLanguageChange = () => {
+  //   const newLang = i18n.language === 'ar' ? 'en' : 'ar'; 
+  //   i18n.changeLanguage(newLang);
+  // };
 
   const cartItems = useAtomValue(cartItemsAtom);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -349,8 +349,8 @@ const Navbar = () => {
             className="absolute top-4 right-4 text-2xl text-primary hover:text-gray-900"
           >
             ✖️
-          </button><ul className="space-y-4 mt-10">
-            <li
+           </button><ul className="space-y-4 mt-10">
+           {/* <li
               className="flex items-center space-x-2 text-primary hover:text-gray-600 cursor-pointer"
               onClick={handleLanguageChange}
             >
@@ -358,7 +358,7 @@ const Navbar = () => {
               <span>{i18n.language === 'ar' ? 'تغيير اللغة' : 'Change Language'}</span>
             </li>
 
-            <li className="border-t border-gray-200 my-4"></li>
+            <li className="border-t border-gray-200 my-4"></li> */}
 
             <li
               onClick={toggleTheme}
