@@ -22,6 +22,13 @@ const AdminSideBar = () => {
       <div>
         <img className="invert w-4/5" src="/daawa-text.png" />
         <div className="ps-4 flex flex-col gap-8 mt-8">
+        
+  <Link to={"/admin"}>
+    <div className="flex items-center gap-4 text-xl">
+      <MdOutlineEqualizer />
+      <span>Dashboard</span>
+    </div>
+  </Link>
           <Link to={"/admin/users"}>
             <div className="flex items-center gap-4 text-xl">
               <MdAccountCircle />

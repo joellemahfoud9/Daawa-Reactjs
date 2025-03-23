@@ -36,7 +36,7 @@ import AdminCollectionsEdit from "./pages/admin/AdminCollectionEdit";
 import CollectionDetails from "./pages/user/CollectionDetails";
 import { AuthProvider } from "./context/AuthContext"; 
 import { ProtectedRoute } from "../src/components/ProtectedRouteProps"; 
-
+import Dashboard from "../src/components/Admin/Dashboard";
 function App() {
   const cartItems = useAtomValue(cartItemsAtom);
 
@@ -83,6 +83,7 @@ function App() {
             <ProtectedRoute role="ADMIN" element={<AdminLayout />} /> 
           }
         >
+          <Route index element={<Dashboard/>} />
           <Route path="users" element={<AdminUsersTable />} />
           <Route path="users/new" element={<AdminUsersNew />} />
           <Route path="users/:id" element={<AdminUsersEdit />} />
