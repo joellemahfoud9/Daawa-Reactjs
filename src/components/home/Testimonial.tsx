@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
+
 
 const Testimonial = () => {
-  const { t } = useTranslation();
+  
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center mt-10 pt-12 w-full">
