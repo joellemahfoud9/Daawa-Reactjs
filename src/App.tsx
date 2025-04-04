@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
-import OurServices from "./pages/OurServices";
-import AllCategories from "./pages/AllCategories";
+// import OurServices from "./pages/OurServices";
+// import AllCategories from "./pages/AllCategories";
 import Collection from "./pages/CollectionBusinesses";
-import Cart from "./pages/Cart";
+// import Cart from "./pages/Cart";
 import CartPage from "./pages/user/CartPage";
 import UserLayout from "./layouts/UserLayout";
 import AdminUsersTable from "./pages/admin/AdminUsersTable";
@@ -66,11 +66,11 @@ function App() {
           }
         >
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<OurServices />} />
-          <Route path="/category/:categoryName" element={<AllCategories />} />
+          {/* <Route path="/services" element={<OurServices />} /> */}
+          {/* <Route path="/category/:categoryName" element={<AllCategories />} /> */}
           <Route path="/collection" element={<Collection />} />
           <Route path="/collection/:id" element={<CollectionDetails />} />
-          <Route path="/cart" element={<Cart />} />
+          {/* <Route path="/cart" element={<Cart />} /> */}
           <Route path="page01" element={<CategoriesBusinesses />} />
           <Route path="page01/:id" element={<BusinessDetails />} />
           <Route path="page02/:id" element={<CategoryBusinesses />} />

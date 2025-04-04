@@ -1,7 +1,7 @@
-import ShoppingCart from "../components/ShoppingCart/ShoppingCart";
+// import ShoppingCart from "../components/ShoppingCart/ShoppingCart";
 
-function Cart() {
-  return <ShoppingCart />;
-}
+// function Cart() {
+//   return <ShoppingCart />;
+// }
 
-export default Cart;
+// export default Cart;

@@ -1,7 +1,7 @@
-import CompanyDetails from "../components/Services/Category/CompanyDetails";
+// import CompanyDetails from "../components/Services/Category/CompanyDetails";
 
-function DetailsCompany() {
-  return <CompanyDetails />;
-}
+// function DetailsCompany() {
+//   return <CompanyDetails />;
+// }
 
-export default DetailsCompany;
+// export default DetailsCompany;

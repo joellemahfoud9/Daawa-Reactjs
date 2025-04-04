@@ -55,12 +55,12 @@ const Register = () => {
     }));
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      role: e.target.checked ? "ADMIN" : "USER",
-    }));
-  };
+  // const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     role: e.target.checked ? "ADMIN" : "USER",
+  //   }));
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,7 +119,7 @@ const Register = () => {
               onChange={handleInputChange}
               required
             />
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <input
                 type="checkbox"
                 id="adminCheck"
@@ -128,7 +128,7 @@ const Register = () => {
                 onChange={handleCheckboxChange}
               />
               <label htmlFor="adminCheck">Register as Admin</label>
-            </div>
+            </div> */}
             <button
               type="submit"
               className="bg-blue-500 text-white text-lg p-3 rounded w-full hover:bg-blue-600 transition-colors"

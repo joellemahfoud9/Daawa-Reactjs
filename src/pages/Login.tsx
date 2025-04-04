@@ -20,8 +20,6 @@ const Login = () => {
   });
 
   useEffect(() => {
-    console.log("data:", data);
-
     if (data && data.token) {
       setCookie("token", data.token, { path: "/" });
       if (data.role) {
