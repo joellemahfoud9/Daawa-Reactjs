@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; 
 
 const Login = () => {
-  const [cookies, setCookie] = useCookies(["token"]);
+  const [cookies, setCookie] = useCookies(["token","role"]);
   const navigate = useNavigate();
-  const { login } = useAuth(); 
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -52,6 +52,8 @@ const Login = () => {
       console.log("Login failed:", err);
     }
   };
+
+  
 
   return (
     <main className="p-page flex justify-center items-center min-h-[70vh]">
@@ -99,6 +101,14 @@ const Login = () => {
             </span>
             {error && <p className="text-red-500">{error}</p>}
           </form>
+
+          <div className="w-full mt-4">
+            <button
+              className="bg-gray-200 text-gray-800 text-lg p-3 rounded w-full hover:bg-gray-300 transition-colors"
+            >
+              Continue as Guest
+            </button>
+          </div>
         </div>
       </div>
     </main>
